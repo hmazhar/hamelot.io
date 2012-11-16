@@ -1,0 +1,17 @@
+---
+# Usage: http://ruhoh.com/usage/configure/ 
+
+RuhohSpec: '1.0'
+theme : grey
+production_url : http://hamelot.co.uk
+
+posts:
+  permalink: /:categories/:title/
+  summary_lines: 20
+  latest: 10
+
+pages:
+  permalink: 'pretty'
+
+comments:
+  provider: false

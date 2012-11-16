@@ -1,0 +1,24 @@
+{
+  "stylesheets" : {
+    "default" : [
+      "bootstrap.min.css"
+    ],
+   
+    "widgets" : {
+      "google_prettify" : "sons-of-obsidian.css"
+    }
+    
+  },
+
+  "javascripts" : {
+    "default" : [
+    bootstrap.min.js,
+    html5gallery.js
+    ]
+  },
+  
+  "manifest" : {
+    "author" : "Jacob Thornton and Mark Otto",
+    "website" : "http://twitter.github.com/bootstrap"
+  }
+}
