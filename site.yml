@@ -14,4 +14,8 @@ navigation :
   - about.html
   - tags.html
 #  - pages.html
-  
+
+plugins:
+  sitemap_generator: # all optional
+    file_name: sitemap.xml  
+  vimeo_video:
