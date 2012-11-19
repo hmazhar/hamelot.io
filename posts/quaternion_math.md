@@ -2,7 +2,7 @@
 title: Quaternion and Vector Math
 date: '2012-11-15'
 description:
-categories:
+categories: [mathematics]
 tags: [quaternion, vector, c++, math]
 ---
 Often times I find myself needing to use quaternions to store rotations in my code. They are compact and easy to use, the math however is not always intuitive. 

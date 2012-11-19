@@ -2,7 +2,7 @@
 title: Material Point Method (MPM) Reference
 date: '2012-11-18'
 description: A reference for the Material Point Method 
-categories:
+categories: [dynamics]
 tags: [MPM, references, particle, physics, elasticity, fracture, flexible]
 ---
 
@@ -16,13 +16,13 @@ Here are several useful references that I have found relating to the use of the 
 3. [An Evaluation of the Material Point Method](http://faculty.cns.uni.edu/~rothm/MPM1.pdf)
 4. [Analysis and Reduction of Quadrature Errors in the Material Point Method](http://www.sci.utah.edu/~guilkey/MPMPubs/steffen_08_IJNME_mpm_preprint.pdf)
 5. [The Generalized Interpolation Material Point Method](http://www.sci.utah.edu/~guilkey/MPMPubs/BardenhagenKober%20copy.pdf)
-6. [Improved Velocity Projection for the Material Point Method](http://www.csafe.utah.edu/pdf/papers/2007_Wallstedt_Guilkey_(Improved_Velocity_Projection_for_the_Material_Point_Method).pdf)
-7. [A convected particle domain interpolation technique to extend applicability of the material point method for problems involving massive deformations](http://www.csafe.utah.edu/pdf/papers/2011_Sadeghirad_Brannon_Burghardt_(A_Convected_Particle_Domain_Interpolation_Technique_To_Extend_Applicability_of_the_Material_Point_Method_for_Problems_Involving_Massive_Deformations).pdf)
+6. <a href="http://www.csafe.utah.edu/pdf/papers/2007_Wallstedt_Guilkey_(Improved_Velocity_Projection_for_the_Material_Point_Method).pdf"> Improved Velocity Projection for the Material Point Method </a>
+7. <a href="http://www.csafe.utah.edu/pdf/papers/2011_Sadeghirad_Brannon_Burghardt_(A_Convected_Particle_Domain_Interpolation_Technique_To_Extend_Applicability_of_the_Material_Point_Method_for_Problems_Involving_Massive_Deformations).pdf"> A convected particle domain interpolation technique to extend applicability of the material point method for problems involving massive deformations </a>
 8. [Analysis of stress updates in the material-point method](http://vbn.aau.dk/files/18643533/Analysis_of_Stress_Updates_in_the_Material-point_Method)
 9. [The material point method in soil mechanics problems](http://fluid.ippt.gov.pl/ictam04/CD_ICTAM04/SM20/10231/SM20_10231.pdf)
 10. [Application of a particle-in-cell method to solid mechanics - PDF Not Free, Sorry](http://www.sciencedirect.com/science/article/pii/0010465594001707)
-11. [A weighted least squares particle-in-cell method for solid mechanics](http://www.csafe.utah.edu/pdf/papers/2009_Wallstedt_Guilkey_(Least_Squares_Particle-In-Cell_Method_for_Solid_Mechanics).pdf)
-12. [Tutorial: A beginner’s introduction to the Material Point Method (MPM)](http://csm.mech.utah.edu/content/2012/03/13/tutorial-a-beginners-introduction-to-the-material-point-method-mpm/)
+11. <a href="http://www.csafe.utah.edu/pdf/papers/2009_Wallstedt_Guilkey_(Least_Squares_Particle-In-Cell_Method_for_Solid_Mechanics).pdf"> A weighted least squares particle-in-cell method for solid mechanics </a>
+12. [Tutorial: A beginner’s introduction to the Material Point Method (MPM)](http://csm.mech.utah.edu/content/2012/03/13/tutorial-a-beginners-introduction-to-the-material-point-method-mpm)
 13. [Enriched Convected Particle Domain Interpolation (CPDI) Method for Analyzing Weak Discontinuities - Page 675](http://congress.cimne.com/particles2011/frontal/doc/Particles_11_ebook.pdf)
 14. [Finite element method: an introduction](http://faculty.ksu.edu.sa/rizwanbutt/Documents/FiniteElementsmethods.pdf)
 15. [Fracturing in Concrete via Lattice-Particle Method](https://www.vutbr.cz/www_base/gigadisk.php?i=71884ae5a)

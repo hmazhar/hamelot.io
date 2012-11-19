@@ -2,7 +2,7 @@
 title: Using ffmpeg to convert a set of images into a video
 date: '2012-11-16'
 description:
-categories:
+categories: [visualization]
 tags: [ffmpeg, convert, video, images]
 ---
 

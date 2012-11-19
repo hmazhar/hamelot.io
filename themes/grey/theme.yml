@@ -1,7 +1,8 @@
 {
   "stylesheets" : {
     "default" : [
-      "bootstrap.min.css"
+      "bootstrap.min.css",
+      "style.css"
     ],
    
     "widgets" : {

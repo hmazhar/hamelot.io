@@ -2,7 +2,7 @@
 title: OpenGL Camera
 date: '2012-11-14'
 description: 
-categories:
+categories: [visualization]
 tags: [opengl, camera, c++, glut, quaternion]
 ---
 
