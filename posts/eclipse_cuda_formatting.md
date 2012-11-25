@@ -23,4 +23,3 @@ tags: [CUDA, eclipse, C++, syntax]
 </pre>
 
 See http://forums.nvidia.com/index.php?showtopic=90943&view=findpost&p=1249657 for a similar trick related to kernel invocations, but note that its use is discouraged. 
-GKR7HYRJ3T2Q

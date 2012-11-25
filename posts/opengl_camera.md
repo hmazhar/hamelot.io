@@ -169,3 +169,6 @@ void CallBackMotionFunc(int x, int y)
 	oglcamera.Move2D(x, y);
 }
 </pre>
+
+
+GKR7HYRJ3T2Q

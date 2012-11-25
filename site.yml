@@ -11,7 +11,7 @@ navigation :
   - research.html
   - publications.html
   - media.php
-  - about.html
+  - about.md
   - tags.html
 #  - pages.html
 
