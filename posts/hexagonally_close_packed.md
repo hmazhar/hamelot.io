@@ -6,7 +6,7 @@ categories: [dynamics]
 tags: [dynamics, modeling, hexagonally, close-packing, spheres]
 ---
 
-This C++ code snippit will generate a [hexagonally close-packed](http://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) set of spheres. It's usefull when you are simulating a block of material and want it's initial rest configuration to be at it's most packed state. 
+This C++ code snippit will generate a [hexagonally close-packed](http://en.wikipedia.org/wiki/Close-packing_of_equal_spheres) set of spheres. It's usefull when you are simulating a block of material and want its initial rest configuration to be at its most packed state. 
 
 The code contains two functions, addHCPSheet and addHCPCube; addHCPCube creates layers of sheets using the addHCPSheet function. The input to addHCPCube is the number of particles in each dimension of the cube, the sphere radius and the global 3D position of the cube.
 

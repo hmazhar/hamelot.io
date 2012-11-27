@@ -26,7 +26,7 @@ Here are several useful references that I have found relating to the use of the 
 13. [Enriched Convected Particle Domain Interpolation (CPDI) Method for Analyzing Weak Discontinuities - Page 675](http://congress.cimne.com/particles2011/frontal/doc/Particles_11_ebook.pdf)
 14. [Finite element method: an introduction](http://faculty.ksu.edu.sa/rizwanbutt/Documents/FiniteElementsmethods.pdf)
 15. [Fracturing in Concrete via Lattice-Particle Method](https://www.vutbr.cz/www_base/gigadisk.php?i=71884ae5a)
-16. [Implicit time integration for the material point method: Quantitative and algorithmic comparisons with the Finite element method](mrl.sci.utah.edu/papers/impmpm_FINAL.pdf)
+16. [Implicit time integration for the material point method: Quantitative and algorithmic comparisons with the Finite element method](http://mrl.sci.utah.edu/papers/impmpm_FINAL.pdf)
 17. [Implicit dynamics in the material-point method - PDF Not Free, Sorry](http://www.sciencedirect.com/science/article/pii/S0045782504000155)
 18. [Material Point Method Calculations with Explicit Cracks, Fracture Parameters, and Crack Propagation](http://www.cof.orst.edu/cof/wse/faculty/Nairn/papers/ICF11.pdf)
 19. [Meshfree and Particle Methods and their Applications](http://www.tam.northwestern.edu/wkl/_wkl/pdf/Meshfree%20and%20Particle%20Methods%20and%20their%20Applications.pdf)
@@ -38,5 +38,5 @@ Here are several useful references that I have found relating to the use of the 
 1. [The classical FEM method and discretization methodology](http://run.usc.edu/femdefo/sifakis-courseNotes-TheoryAndDiscretization.pdf)
 2. [Stress and Strain Tensors – Deformation and Strain](http://www.colorado.edu/MCEN/MCEN5023/chap_04.pdf)
 3. [Stress in 3D](http://www.colorado.edu/engineering/CAS/courses.d/Structures.d/IAST.Lect01.d/IAST.Lect01.pdf)
-4. [Kinematics: The mathematics of deformation](www.mech.utah.edu/~brannon/public/Deformation.pdf)
+4. <a href="http://www.mech.utah.edu/~brannon/public/Deformation.pdf">Kinematics: The mathematics of deformation</a>
 5. [Velocity gradients and stress tensors](http://www.aerostudents.com/files/constitutiveModelling/velocityGradientsAndStressTensors.pdf)
