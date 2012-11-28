@@ -5,6 +5,10 @@ description:
 categories: [mathematics]
 tags: [quaternion, vector, c++, math]
 ---
+
+#####UPDATE: The definitions of R3 and R4 were missing, code has been updated
+#####UPDATE: Added a function to get a quaternion from and angle and an axis
+
 Often times I find myself needing to use quaternions to store rotations in my code. They are compact and easy to use, the math however is not always intuitive. 
 
 
@@ -14,10 +18,17 @@ Often times I find myself needing to use quaternions to store rotations in my co
 
 <pre>
 typedef double real;
+
 struct real3 {
+
+	real3(real a = 0, real b = 0, real c = 0): x(a), y(b), z(c) {}
+
 	real x, y, z;
 };
 struct real4 {
+
+	real4(real d = 0, real a = 0, real b = 0, real c = 0): w(d), x(a), y(b), z(c) {}
+
 	real w, x, y, z;
 };
 </pre>
@@ -27,7 +38,7 @@ struct real4 {
 <pre>
 inline real3 cross(const real3 &a, const real3 &b)
 {
-	return R3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
+	return real3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
 }
 inline real3 dot(const real3 &a, const real3 &b)
 {
@@ -43,7 +54,7 @@ Store the inverse of the length to reduce computational cost
 real4 normalize(const real4 &a)
 {
 	real length = 1.0/sqrt(a.w * a.w + a.x * a.x + a.y * a.y + a.z * a.z);
-	return R4(a.w * length, a.x * length, a.y * length, a.z * length);
+	return real4(a.w * length, a.x * length, a.y * length, a.z * length);
 }
 </pre>
 
@@ -81,11 +92,30 @@ inline real4 mult(const real4 &a, const real4 &b)
 <pre>
 inline real3 rotate(const real3 &v, const real4 &q)
 {
-	real4 r = mult(mult(q, R4(0, v.x, v.y, v.z)), inv(q));
-	return R3(r.x, r.y, r.z);
+	real4 r = mult(mult(q, real4(0, v.x, v.y, v.z)), inv(q));
+	return real3(r.x, r.y, r.z);
 }
 
 </pre>
+
+###Angle Axis to Quaternion
+<pre>
+real4 Q_from_AngAxis(real angle, real3 axis)
+{
+	real4 quat;
+	real halfang;
+	real sinhalf;
+	halfang = (angle * 0.5);
+	sinhalf = sin(halfang);
+	quat.w = cos(halfang);
+	quat.x = axis.x * sinhalf;
+	quat.y = axis.y * sinhalf;
+	quat.z = axis.z * sinhalf;
+	return (quat);
+}
+</pre>
+
+
 ###Other operations
 Some basic multiply/add operations which might be usefull
 <pre>
