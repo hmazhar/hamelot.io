@@ -41,3 +41,23 @@ ffmpeg -r 60 -f image2 -s 1280x720 -i pic%05d.png -i MP3FILE.mp3 -vcodec libx264
 -i MP3FILE.mp3 : The audio filename
 -acodec copy : Copies the audio from the input stream to the output stream
 
+###Converting a video to mp4 
+If the video has already been compressed the following can be used to change the codmpression to h264:
+
+<pre>
+ffmpeg  -i INPUT.avi -vcodec libx264 -crf 25 OUTPUT.mp4
+</pre>
+
+
+###Playback Issues for Quicktime/Other Codecs
+
+Quicktime and some other codecs have trouble playing certain pixel formats such as 4:4:4 Planar and 4:2:2 Planar while 4:2:0 seems to work fine
+
+Add the following flag to force the pixel format:
+
+<pre>
+-pix_fmt yuv420p
+</pre>
+
+
+
