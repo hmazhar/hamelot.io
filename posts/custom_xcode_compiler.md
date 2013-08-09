@@ -23,7 +23,7 @@ Next create a copy of GCC 4.2.xcplugin and put it in the Xcode plugin path
 make the /Library/Application Support/Developer/Shared/Xcode/Plug-ins/ if it doesn't already exist
 
 <pre>
-sudo mkdir -p /Library/Application Support/Developer/Shared/Xcode/Plug-ins/
+sudo mkdir -p "/Library/Application Support/Developer/Shared/Xcode/Plug-ins/"
 sudo cp -r "GCC 4.2.xcplugin" "/Library/Application Support/Developer/Shared/Xcode/Plug-ins/GCC 4.7.xcplugin"
 </pre>
 
@@ -64,7 +64,7 @@ cd English.lproj/
 sudo mv GCC\ 4.2.strings GCC\ 4.7.strings
 </pre>
 
-Open the GCC 4.7.xcspec file and change:
+Open the GCC 4.7.xcspec file and change, make sure to use sudo:
 
 <pre>
 Identifier = "com.apple.compilers.gcc.4_7";
@@ -77,6 +77,7 @@ IsNoLongerSupported = NO;
 </pre>
 
 Now, at this point the compiler should appear in Xcode (make sure to exit and open up Xcode again) but will probably error out due to some compiler flags which we need to fix
+
 open up GCC 4.7.xcspec
 
 <pre>
