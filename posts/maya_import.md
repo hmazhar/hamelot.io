@@ -6,7 +6,8 @@ categories: [visualization]
 tags: [maya]
 ---
 
-Maya is a useful tool for visualizing simulation results. However sometimes coordinate systems get messed up when going from a right$
+Maya is a useful tool for visualizing simulation results. 
+However sometimes coordinate systems get messed up when loading in data.
 
 Using A vector for position and a quaternion for rotation we have:
 
