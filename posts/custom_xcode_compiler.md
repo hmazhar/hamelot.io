@@ -1,10 +1,15 @@
 ---
 title: Add custom compiler to Xcode
-date: '2012-12-06'
+date: '2013-11-13'
 description: How to add a custom compiler to xcode
 categories: [programming]
 tags: [xcode, gcc, compilers]
 ---
+
+
+Update 2013-11-13
+Added paths for Xcode 4.2 and 3.6
+
 
 I do a lot of my coding on osx, and was getting annoyed that I could not pick a specific compiler from within Xcode that I had installed. Using makefiles is an option but I wanted to see if I could add a new compiler to Xcode 4. 
 [This](http://skurganov.blogspot.com/) guide was the basis for mine, tweaked for Xcode 4
@@ -17,6 +22,19 @@ Go to you applications folder and open up the "Xcode.app" package.
 
 <pre>
 cd /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins
+</pre>
+
+For Xcode 4.2 the correct path is (thanks to Joram Vanhaerens for this info)
+[stack overflow](http://stackoverflow.com/questions/8379739/how-can-i-call-macports-gcc-from-xcode-im-also-on-an-obsolete-system)
+
+<pre>
+cd /Developer/Library/Xcode/PrivatePlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins/
+</pre>
+
+For Xcode 3.6 the correct path is (untested)
+
+<pre>
+cd /Developer/Library/Xcode/Plug-ins
 </pre>
 
 Next create a copy of GCC 4.2.xcplugin and put it in the Xcode plugin path
