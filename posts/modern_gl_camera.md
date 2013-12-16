@@ -8,8 +8,9 @@ tags: [glm, modernGL, camera, c++, glut, quaternion]
 
 This is an update to my previous opengl Camera class. It uses GLM for all math operations and is better suited for use with modern opengl code based on shaders and such.
 
+Code is also availible here:
 
-
+https://github.com/hmazhar/moderngl_camera
 
 ####Initialize the camera
 
