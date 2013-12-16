@@ -14,13 +14,6 @@ https://github.com/hmazhar/moderngl_camera
 
 ####Initialize the camera
 
-The camera requires:
-
-* a position
-* a point to look at
-* the "up" direction, y is usually up
-* a scale for movement
-
 <pre>
 Camera camera;
 camera.SetMode(FREE);	//Two Modes FREE and ORTHO
