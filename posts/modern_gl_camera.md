@@ -14,6 +14,13 @@ https://github.com/hmazhar/moderngl_camera
 
 ####Initialize the camera
 
+The camera requires:
+* a mode, Either FREE or ORTHO
+* a position
+* a point to look at
+* clipping information
+* the field of View
+
 <pre>
 Camera camera;
 camera.SetMode(FREE);	//Two Modes FREE and ORTHO
