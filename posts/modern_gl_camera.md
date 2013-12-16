@@ -15,6 +15,7 @@ https://github.com/hmazhar/moderngl_camera
 ####Initialize the camera
 
 The camera requires:
+
 * a mode, Either FREE or ORTHO
 * a position
 * a point to look at
