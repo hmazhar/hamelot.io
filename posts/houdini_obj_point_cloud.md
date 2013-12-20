@@ -1,5 +1,5 @@
 ---
-title: Point Cloud From OBJ Mesh Volume
+title: Point Cloud From OBJ Mesh
 date: '2013-12-19'
 description: Creating a point cloud from an obj file
 categories: [visualization]
