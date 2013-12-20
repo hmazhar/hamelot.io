@@ -21,18 +21,18 @@ and import your obj mesh, in this example we will use the stanford bunny.
 
 
 In the bottom right corner of the screen double click on the new node that appears. This geometry node contains one node, the bunny mesh. 
-
-
-From this node create a node by clicking on the arrow beneath the existing node and create a "points from volume" node. Hint: start typing the name of the node you want and it will narrow down what you need. 
 ![Alt text](http://hamelot.co.uk/assets/media/images/posts/houdini3.jpg)
 
-In this node we can control what type of point cloud we want, "Grid" or "Tetrahedral" and also the density of the cloud by changing the "Point Separation" value. 
-
+From this node create a node by clicking on the arrow beneath the existing node and create a "points from volume" node. Hint: start typing the name of the node you want and it will narrow down what you need. 
 ![Alt text](http://hamelot.co.uk/assets/media/images/posts/houdini4.jpg)
 
-If you would like more information about the cloud middle click on the "points from volume" node to see statistics about the node. This info will include the number of points currently in the cloud.
+In this node we can control what type of point cloud we want, "Grid" or "Tetrahedral" and also the density of the cloud by changing the "Point Separation" value. 
+![Alt text](http://hamelot.co.uk/assets/media/images/posts/houdini5.jpg)
 
+
+If you would like more information about the cloud middle click on the "points from volume" node to see statistics about the node. This info will include the number of points currently in the cloud.
+![Alt text](http://hamelot.co.uk/assets/media/images/posts/houdini6.jpg)
 
 To export the cloud create a File node and set the "File Mode" to "Write Files" then write your cloud data. 
 
-![Alt text](http://hamelot.co.uk/assets/media/images/posts/houdini5.jpg)
+![Alt text](http://hamelot.co.uk/assets/media/images/posts/houdini7.jpg)
