@@ -1,7 +1,7 @@
 ---
 title: ModernGL Camera
 date: '2013-12-16'
-description: 
+description: A modern opengl quaternion camera class
 categories: [visualization]
 tags: [glm, modernGL, camera, c++, glut, quaternion]
 ---
