@@ -1,14 +1,17 @@
 ---
-title: Point Cloud From OBJ Mesh
+title: Point Cloud From OBJ Mesh Volume
 date: '2013-12-19'
 description: Creating a point cloud from an obj file
 categories: [visualization]
 tags: [houdini, sidefx, obj]
 ---
 
-Sometimes it can be useful to be able to generate a point cloud out of an OBJ mesh. This cloud can then be used for simulation, visualization etc. The easisest way I have found to do this is to use [Houdini](http://www.sidefx.com/index.php). It is an excellent piece of software and the developers provide a free learning edition which is what we will use.
+Sometimes it can be useful to be able to generate a point cloud out of an OBJ mesh. This cloud can then be used for simulation, visualization etc. The easisest way I have found to do this is to use [Houdini](http://www.sidefx.com/index.php). 
 
-So lets begin
+It is an excellent piece of software and the developers provide a free learning edition which is what we will use.
+
+So lets begin!
+
 ![Alt text](http://hamelot.co.uk/assets/media/images/posts/houdini1.jpg)
 First we need to import our obj model:
 
