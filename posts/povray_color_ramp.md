@@ -26,6 +26,6 @@ I sometimes need to use a color ramp in povray to render the velocity of a parti
 	#local c=<1,0,0>;
 #end
 
-sphere {<0,0,0>, 1 translate<x, y, z >  pigment {color rgb c }finish {diffuse 1 ambient 0 specular 0 } }
+sphere {<0,0,0>, 1 translate < x, y, z >  pigment {color rgb c }finish {diffuse 1 ambient 0 specular 0 } }
 
 </pre>
