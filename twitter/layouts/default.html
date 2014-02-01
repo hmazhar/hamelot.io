@@ -47,7 +47,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{urls.base_path}}">{{ data.title }}</a>
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav nav-justified">
             {{# data.navigation?to__root }}
               {{> pages_list }}
             {{/ data.navigation?to__root }}
@@ -57,7 +57,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-    <div class="container-narrow">
+    <div class="container-fluid">
 
       <div class="content">
         {{{ content }}}
