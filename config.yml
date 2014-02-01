@@ -98,4 +98,4 @@ widgets :
     # colorscheme: light
 
   google_prettify :
-    linenums : true
+    linenums : false
