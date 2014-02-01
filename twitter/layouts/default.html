@@ -38,26 +38,17 @@
 
    <nav class="navbar navbar-default" role="navigation">
     <div class="container-narrow">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="{{urls.base_path}}">{{ data.title }}</a>
           <ul class="nav navbar-nav">
             {{# data.navigation?to__root }}
               {{> pages_list }}
             {{/ data.navigation?to__root }}
-            &nbsp&nbsp
-            <li href="http://hamelot.co.uk/posts/rss.xml" rel="me"><i class="fa fa-rss-square fa-3x"></i></li>&nbsp&nbsp
-      <li href="https://github.com/hmazhar" rel="me"><i class="fa fa-github fa-3x"></i></li>&nbsp&nbsp
-      <li href="https://www.linkedin.com/in/hammadmazhar/" rel="me"><i class="fa fa-linkedin fa-3x"></i></li>&nbsp&nbsp
-      <li href="https://plus.google.com/117672433856025584680?rel=author" rel="me" <i class="fa fa-google-plus fa-3x"></i></li>&nbsp&nbsp
-      <li href="https://vimeo.com/hammadmazhar/videos/appears/" rel="me" <i class="fa fa-vimeo-square fa-3x"></i></li>
           </ul>
+          <a href="http://hamelot.co.uk/posts/rss.xml" rel="me"><i class="fa fa-rss-square fa-3x"></i></a>&nbsp&nbsp
+<a href="https://github.com/hmazhar" rel="me"><i class="fa fa-github fa-3x"></i></a>&nbsp&nbsp
+<a href="https://www.linkedin.com/in/hammadmazhar/" rel="me"><i class="fa fa-linkedin fa-3x"></i></a>&nbsp&nbsp
+<a href="https://plus.google.com/117672433856025584680?rel=author" rel="me" <i class="fa fa-google-plus fa-3x"></i></a>&nbsp&nbsp
+<a href="https://vimeo.com/hammadmazhar/videos/appears/" rel="me" <i class="fa fa-vimeo-square fa-3x"></i></a>
         </div>
     </div>
 </div>
