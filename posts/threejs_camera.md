@@ -9,7 +9,7 @@ This is a three.js camera class based on my quaternion camera code, math is very
 
 based on https://github.com/mrdoob/three.js/blob/master/examples/js/controls/PointerLockControls.js
 
-<pre class="prettyprint lang-js">
+<pre>
 /**
  * @author hammad mazhar / http://hamelot.co.uk/
  * based on https://github.com/mrdoob/three.js/blob/master/examples/js/controls/PointerLockControls.js
