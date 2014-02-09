@@ -15,7 +15,7 @@ An open source dynamics engine capable of simulating complex mechanisms.
 
 A legacy OpenGL visualizer for chrono.
 
-[chrono-helper](https://github.com/projectchrono/chrono-helper)
+[Chrono-helper](http://projectchrono.github.io/chrono-helper/)
 
 A collection of helper functions for chrono designed to simplify generation of models.
 
