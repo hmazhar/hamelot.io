@@ -19,10 +19,10 @@ A legacy OpenGL visualizer for chrono.
 
 A collection of helper functions for chrono designed to simplify generation of models.
 
-[moderngl camera](https://github.com/hmazhar/moderngl_camera)
+[moderngl camera](http://hmazhar.github.io/moderngl_camera)
 
 A quaternion based camera for modern OpenGL.
 
-[bhclassic to ascii](https://github.com/hmazhar/bhclassic_processing)
+[bhclassic to ascii](http://hmazhar.github.io/bhclassic_processing/)
 
 Convert a Houdini bhclassic point cloud to an ascii file.
