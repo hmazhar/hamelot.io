@@ -58,7 +58,7 @@ I wanted to get a better understanding of the peak performance I could hope for 
 
 On to the results!
 
-<pre>
+~~~
 Platform: AMD Accelerated Parallel Processing
 Device: AMD Opteron(TM) Processor 6274                 
 Driver version  : 1214.3 (sse2,avx,fma4) (Linux x64)
@@ -102,7 +102,7 @@ Transfer bandwidth (GBPS)
   memcpy to mapped ptr       : 2.62
 
 Kernel launch latency : 22.18 us
-</pre>
+~~~
 
 If I take my test machine's specifications and multiply them out I get the following values:
 - 563.2 DP Gflops for 4xAMD Opteron 6274
@@ -153,7 +153,7 @@ The following example code can be simplified if the target platform/device numbe
 
 - Getting our OpenCL platform
 
-<pre>
+~~~
 
 std::vector<cl_platform_id> GetPlatforms() {
     cl_uint platformIdCount = 0;
@@ -170,11 +170,11 @@ std::vector<cl_platform_id> GetPlatforms() {
     return platformIds;
 }
 
-</pre>
+~~~
 
 - Get the devices for a platform
 
-<pre>
+~~~
 std::vector<cl_device_id> GetDevices(cl_platform_id platform) {
     cl_uint deviceIdCount = 0;
 	clGetDeviceIDs(platform, CL_DEVICE_TYPE_ALL, 0, NULL, &deviceIdCount);
@@ -191,23 +191,23 @@ std::vector<cl_device_id> GetDevices(cl_platform_id platform) {
     return deviceIds;
 }
 
-</pre>
+~~~
 
 - Create an OpenCL context for a specified device
 
-<pre>
+~~~
 cl_context context = clCreateContext(0, 1, &deviceIds[device_num], NULL, NULL, NULL);
-</pre>
+~~~
 
 - Create a Command Queue (with profiling enabled, needed for timing kernels)
 
-<pre>
+~~~
 cl_command_queue queue = clCreateCommandQueue(context, deviceIds[device_num], CL_QUEUE_PROFILING_ENABLE, NULL);
-</pre>
+~~~
 
 - Create our Program for a specified context
 
-<pre>
+~~~
 std::string LoadKernel(const char* name) {
     std::ifstream in(name);
 	std::string result((std::istreambuf_iterator<char>(in)), std::istreambuf_iterator<char>());
@@ -220,34 +220,34 @@ cl_program CreateProgram(const std::string& source, cl_context context) {
 	return program;
 }
 cl_program program = CreateProgram(LoadKernel("kernel.cl"), context);
-</pre>
+~~~
 
 - Build the program
 
-<pre>
+~~~
 clBuildProgram(program, 0, NULL, "-cl-mad-enable", NULL, NULL);
-</pre>
+~~~
 
 - Create a kernel from our program
 
-<pre>
+~~~
 cl_kernel kernel = clCreateKernel(program, "FunctionName", NULL);
-</pre>
+~~~
 
 - Specify arguments to the kernel
 
-<pre>
-    clSetKernelArg(kernel, 0, sizeof(cl_mem), &d_a);
+~~~
+  clSetKernelArg(kernel, 0, sizeof(cl_mem), &d_a);
 	clSetKernelArg(kernel, 1, sizeof(cl_mem), &d_b);
 	clSetKernelArg(kernel, 2, sizeof(cl_mem), &d_c);
 	clSetKernelArg(kernel, 3, sizeof(unsigned int), &n);
-</pre>
+~~~
 
 - Run the Kernel
 
-<pre>
+~~~
 clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &globalSize, &localSize, 0, NULL, NULL);
-</pre>
+~~~
 
 I have glossed over some of the implementation details but this gives an idea of the steps involved with getting a kernel running.
 
@@ -298,7 +298,7 @@ For each test I will compute with 1,024,000 contacts.
 Basic implementation using floats. Too many function arguments and not very fun to write.
 Memory is organized on a per contact basis. For the jacobians, memory for each row in D^T is offset by number of contacts. 
 
-<pre>
+~~~
 __kernel void KERNEL_1_0(
     __global float *JxA, __global float *JyA, __global float *JzA, 
     __global float *JuA, __global float *JvA, __global float *JwA, 
@@ -334,6 +334,6 @@ __kernel void KERNEL_1_0(
     out_omg_yB[id] = JvB[id+n_contact*0]*gam_x+JvB[id+n_contact*1]*gam_y+JvB[id+n_contact*2]*gam_z;
     out_omg_zB[id] = JwB[id+n_contact*0]*gam_x+JwB[id+n_contact*1]*gam_y+JwB[id+n_contact*2]*gam_z;
 }
-</pre>
+~~~
 
 ###Version 1.1
