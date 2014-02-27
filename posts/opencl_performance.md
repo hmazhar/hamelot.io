@@ -152,7 +152,9 @@ At this point we can allocate memory, copy it to the device and run our kernel a
 The following example code can be simplified if the target platform/device numbers are known at run time. This isn't always the case so we must first count the platforms/devices and then pick which one we want. I am not going to go into specifics about some of the options in the code below, will leave that for a different post.
 
 - Getting our OpenCL platform
+
 <pre>
+
 std::vector<cl_platform_id> GetPlatforms() {
     cl_uint platformIdCount = 0;
 	clGetPlatformIDs(0, NULL, &platformIdCount);
@@ -167,8 +169,11 @@ std::vector<cl_platform_id> GetPlatforms() {
     clGetPlatformIDs(platformIdCount, platformIds.data(), NULL);
     return platformIds;
 }
+
 </pre>
+
 - Get the devices for a platform
+
 <pre>
 std::vector<cl_device_id> GetDevices(cl_platform_id platform) {
     cl_uint deviceIdCount = 0;
@@ -185,18 +190,23 @@ std::vector<cl_device_id> GetDevices(cl_platform_id platform) {
 	clGetDeviceIDs(platform, CL_DEVICE_TYPE_ALL, deviceIdCount, deviceIds.data(), NULL);
     return deviceIds;
 }
+
 </pre>
+
 - Create an OpenCL context for a specified device
+
 <pre>
 cl_context context = clCreateContext(0, 1, &deviceIds[device_num], NULL, NULL, NULL);
 </pre>
 
 - Create a Command Queue (with profiling enabled, needed for timing kernels)
+
 <pre>
 cl_command_queue queue = clCreateCommandQueue(context, deviceIds[device_num], CL_QUEUE_PROFILING_ENABLE, NULL);
 </pre>
 
 - Create our Program for a specified context
+
 <pre>
 std::string LoadKernel(const char* name) {
     std::ifstream in(name);
@@ -213,16 +223,19 @@ cl_program program = CreateProgram(LoadKernel("kernel.cl"), context);
 </pre>
 
 - Build the program
+
 <pre>
 clBuildProgram(program, 0, NULL, "-cl-mad-enable", NULL, NULL);
 </pre>
 
 - Create a kernel from our program
+
 <pre>
 cl_kernel kernel = clCreateKernel(program, "FunctionName", NULL);
 </pre>
 
 - Specify arguments to the kernel
+
 <pre>
     clSetKernelArg(kernel, 0, sizeof(cl_mem), &d_a);
 	clSetKernelArg(kernel, 1, sizeof(cl_mem), &d_b);
@@ -231,6 +244,7 @@ cl_kernel kernel = clCreateKernel(program, "FunctionName", NULL);
 </pre>
 
 - Run the Kernel
+
 <pre>
 clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &globalSize, &localSize, 0, NULL, NULL);
 </pre>
