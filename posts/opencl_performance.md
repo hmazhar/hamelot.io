@@ -13,7 +13,7 @@ Here is how I plan on going about this: First I want to determine the peak perfo
 I plan on detailing every kernel modification I made even when it makes the code perform slower. I am by no means an expert with OpenCL (currently at 3 days of experience), but I do know a bit about writing parallel code. 
 
 #Testing Setup
----
+
 ###Hardware:
 The specifications for the test rig are as follows:
 
@@ -52,9 +52,7 @@ The specifications for the test rig are as follows:
 - OpenCL:  AMD APP SDK v2.9 with OpenCL™ [link](http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-accelerated-parallel-processing-app-sdk/downloads/)
     * Supports OpenCL 1.2
 
----
 #Synthetic Benchmark
----
 
 I wanted to get a better understanding of the peak performance I could hope for when using OpenCL on this machine. I found a nice little benchmark called [clpeak](https://github.com/krrishnarraj/clpeak) written by Krishnaraj Bhat. He has a blog post [here](http://krblogs.com/post/71420522887/clpeak-peak-performance-of-your-opencl-device) discussing it in more detail. 
 
@@ -116,9 +114,8 @@ Comparing that to the results form clpeak
 
 This means that I am reaching 43.76% of peak flop rate and 30.97% peak memory bandwidth, not too bad!
 
----
 #Setting up OpenCL
----
+
 Getting started with OpenCL isn't very straight forward. Compared to OpenMP and CUDA where you need 1-2 lines to run a function in parallel. OpenCL needs 30-40 lines of code just to get started. 
 
 The process of starting up OpenCL can be split into several parts:
@@ -240,9 +237,9 @@ clEnqueueNDRangeKernel(queue, kernel, 1, NULL, &globalSize, &localSize, 0, NULL,
 
 I have glossed over some of the implementation details but this gives an idea of the steps involved with getting a kernel running.
 
----
+
 #Problem I want to solve
----
+
 My problem involves performing a sparse matrix vector multiply (SPMV) between a list of contact jacobian matricies (one for each contact) and a vector of values. The vector represents my lagrange multipliers but for the purposes of this discussion this is not important. 
 
 I will time my code by running the kernel 100 times, averaging the results. Because the first kernel call is usually expensive, I will run the code once outside of the timing loop to remove any bias. 
