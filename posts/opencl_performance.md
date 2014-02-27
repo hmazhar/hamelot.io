@@ -105,10 +105,12 @@ Kernel launch latency : 22.18 us
 ~~~
 
 If I take my test machine's specifications and multiply them out I get the following values:
+
 - 563.2 DP Gflops for 4xAMD Opteron 6274
 - 166.56 GB/s peak memory bandwidth based on 1333 Mhz memory speed
 
 Comparing that to the results form clpeak
+
 - 246.49 DP Gflops
 - 51.59 GB/s memory bandwidth
 
