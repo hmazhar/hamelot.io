@@ -290,11 +290,17 @@ Output_A and Output_B can be changed.
 ##Performance Table:
 For each test I will compute with 1,024,000 contacts.
 
-| Version     | Time [ms] 	| Gflops 	| Memory GB/s | % max GFlops 	| % max GB/s 	|
-|---------	|-----------	|--------	|---------	  |--------------	|------------	|
-| 1.0     	| 17.947 ms 	| 3.423  	| 10.840  	  | 1.36         	| 20.60      	|
-| 1.1     	|           	|        	|         	  |              	|            	|
-| 1.2     	|           	|        	|         	  |              	|            	|
+| Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
+|---------  |-----------  |-------- |---------  |-------------- |------------ |
+| 1.0       | 17.947      | 3.423   | 10.840    | 1.36          | 20.60       |
+| 1.1       | 17.185      | 3.575   | 11.321    | 1.45          | 21.94       |
+| 1.2       | 7.014       | 8.764   | 27.752    | 3.56          | 53.79       |
+| 1.3       | 6.856       | 8.964   | 28.385    | 3.64          | 55.02       |
+| 1.4       | 6.79        | 9.055   | 28.673    | 3.67          | 55.58       |
+| 1.5       | 6.088       | 10.093  | 31.959    | 4.09          | 61.95       |
+| 1.6       | 6.244       | 9.841   | 31.163    | 3.99          | 60.41       |
+| 1.7       | 6.107       | 10.069  | 31.884    | 4.08          | 61.80       |
+| 1.8       | 6.063       | 10.144  | 32.122    | 4.12          | 62.26       |
 
 ###Version 1.0
 Basic implementation using floats. Too many function arguments and not very fun to write.
@@ -339,3 +345,323 @@ __kernel void KERNEL_1_0(
 ~~~
 
 ###Version 1.1
+Switch up the way the memory is layed out. 
+
+~~~
+__kernel void KERNEL_1_0(
+    __global float *JxA, __global float *JyA, __global float *JzA, 
+    __global float *JuA, __global float *JvA, __global float *JwA, 
+    __global float *JxB, __global float *JyB, __global float *JzB, 
+  __global float *JuB, __global float *JvB, __global float *JwB, 
+  __global float *gamma_x, __global float *gamma_y, __global float *gamma_z,
+  __global float *out_vel_xA, __global float *out_vel_yA, __global float *out_vel_zA,
+  __global float *out_omg_xA, __global float *out_omg_yA, __global float *out_omg_zA,
+  __global float *out_vel_xB, __global float *out_vel_yB, __global float *out_vel_zB,
+  __global float *out_omg_xB, __global float *out_omg_yB, __global float *out_omg_zB,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float gam_x = gamma_x[id];
+    float gam_y = gamma_y[id];
+    float gam_z = gamma_z[id];
+
+    out_vel_xA[id] = JxA[id+n_contact*0]*gam_x+JyA[id+n_contact*0]*gam_y+JzA[id+n_contact*0]*gam_z;
+    out_vel_yA[id] = JxA[id+n_contact*1]*gam_x+JyA[id+n_contact*1]*gam_y+JzA[id+n_contact*1]*gam_z;
+    out_vel_zA[id] = JxA[id+n_contact*2]*gam_x+JyA[id+n_contact*2]*gam_y+JzA[id+n_contact*2]*gam_z;
+ 
+    out_omg_xA[id] = JuA[id+n_contact*0]*gam_x+JvA[id+n_contact*0]*gam_y+JwA[id+n_contact*0]*gam_z;
+    out_omg_yA[id] = JuA[id+n_contact*1]*gam_x+JvA[id+n_contact*1]*gam_y+JwA[id+n_contact*1]*gam_z;
+    out_omg_zA[id] = JuA[id+n_contact*2]*gam_x+JvA[id+n_contact*2]*gam_y+JwA[id+n_contact*2]*gam_z;
+ 
+    out_vel_xB[id] = JxB[id+n_contact*0]*gam_x+JyB[id+n_contact*0]*gam_y+JzB[id+n_contact*0]*gam_z;
+    out_vel_yB[id] = JxB[id+n_contact*1]*gam_x+JyB[id+n_contact*1]*gam_y+JzB[id+n_contact*1]*gam_z;
+    out_vel_zB[id] = JxB[id+n_contact*2]*gam_x+JyB[id+n_contact*2]*gam_y+JzB[id+n_contact*2]*gam_z;
+ 
+    out_omg_xB[id] = JuB[id+n_contact*0]*gam_x+JvB[id+n_contact*0]*gam_y+JwB[id+n_contact*0]*gam_z;
+    out_omg_yB[id] = JuB[id+n_contact*1]*gam_x+JvB[id+n_contact*1]*gam_y+JwB[id+n_contact*1]*gam_z;
+    out_omg_zB[id] = JuB[id+n_contact*2]*gam_x+JvB[id+n_contact*2]*gam_y+JwB[id+n_contact*2]*gam_z;
+}
+~~~
+
+
+###Version 1.2
+Based on the clpeak benchmark using float4 should give me better performance. 
+Note that here I am using float3 which is stored as a float4 in memory. 
+
+~~~
+__kernel void KERNEL_1_0(
+  __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+  __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float *out_vel_xA, __global float *out_vel_yA, __global float *out_vel_zA,
+  __global float *out_omg_xA, __global float *out_omg_yA, __global float *out_omg_zA,
+  __global float *out_vel_xB, __global float *out_vel_yB, __global float *out_vel_zB,
+  __global float *out_omg_xB, __global float *out_omg_yB, __global float *out_omg_zB,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 gam = gamma[id];
+
+    out_vel_xA[id] = JxA[id].x*gam.x+JyA[id].x*gam.y+JzA[id].x*gam.z;
+    out_vel_yA[id] = JxA[id].y*gam.x+JyA[id].y*gam.y+JzA[id].y*gam.z;
+    out_vel_zA[id] = JxA[id].z*gam.x+JyA[id].z*gam.y+JzA[id].z*gam.z;
+ 
+    out_omg_xA[id] = JuA[id].x*gam.x+JvA[id].x*gam.y+JwA[id].x*gam.z;
+    out_omg_yA[id] = JuA[id].y*gam.x+JvA[id].y*gam.y+JwA[id].y*gam.z;
+    out_omg_zA[id] = JuA[id].z*gam.x+JvA[id].z*gam.y+JwA[id].z*gam.z;
+ 
+    out_vel_xB[id] = JxB[id].x*gam.x+JyB[id].x*gam.y+JzB[id].x*gam.z;
+    out_vel_yB[id] = JxB[id].y*gam.x+JyB[id].y*gam.y+JzB[id].y*gam.z;
+    out_vel_zB[id] = JxB[id].z*gam.x+JyB[id].z*gam.y+JzB[id].z*gam.z;
+ 
+    out_omg_xB[id] = JuB[id].x*gam.x+JvB[id].x*gam.y+JwB[id].x*gam.z;
+    out_omg_yB[id] = JuB[id].y*gam.x+JvB[id].y*gam.y+JwB[id].y*gam.z;
+    out_omg_zB[id] = JuB[id].z*gam.x+JvB[id].z*gam.y+JwB[id].z*gam.z;
+}
+~~~
+
+###Version 1.3
+Preload all of the data into registers
+
+~~~
+__kernel void KERNEL_1_0(
+    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float *out_vel_xA, __global float *out_vel_yA, __global float *out_vel_zA,
+  __global float *out_omg_xA, __global float *out_omg_yA, __global float *out_omg_zA,
+  __global float *out_vel_xB, __global float *out_vel_yB, __global float *out_vel_zB,
+  __global float *out_omg_xB, __global float *out_omg_yB, __global float *out_omg_zB,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 gam = gamma[id];
+    float3 _JxA = JxA[id], _JyA = JyA[id], _JzA = JzA[id];
+    float3 _JuA = JuA[id], _JvA = JvA[id], _JwA = JwA[id];
+    float3 _JxB = JxB[id], _JyB = JyB[id], _JzB = JzB[id];
+    float3 _JuB = JuB[id], _JvB = JvB[id], _JwB = JwB[id];
+
+    out_vel_xA[id] = _JxA.x*gam.x+_JyA.x*gam.y+_JzA.x*gam.z;
+    out_vel_yA[id] = _JxA.y*gam.x+_JyA.y*gam.y+_JzA.y*gam.z;
+    out_vel_zA[id] = _JxA.z*gam.x+_JyA.z*gam.y+_JzA.z*gam.z;
+ 
+    out_omg_xA[id] = _JuA.x*gam.x+_JvA.x*gam.y+_JwA.x*gam.z;
+    out_omg_yA[id] = _JuA.y*gam.x+_JvA.y*gam.y+_JwA.y*gam.z;
+    out_omg_zA[id] = _JuA.z*gam.x+_JvA.z*gam.y+_JwA.z*gam.z;
+ 
+    out_vel_xB[id] = _JxB.x*gam.x+_JyB.x*gam.y+_JzB.x*gam.z;
+    out_vel_yB[id] = _JxB.y*gam.x+_JyB.y*gam.y+_JzB.y*gam.z;
+    out_vel_zB[id] = _JxB.z*gam.x+_JyB.z*gam.y+_JzB.z*gam.z;
+ 
+    out_omg_xB[id] = _JuB.x*gam.x+_JvB.x*gam.y+_JwB.x*gam.z;
+    out_omg_yB[id] = _JuB.y*gam.x+_JvB.y*gam.y+_JwB.y*gam.z;
+    out_omg_zB[id] = _JuB.z*gam.x+_JvB.z*gam.y+_JwB.z*gam.z;
+}
+~~~
+
+###Version 1.4
+Store values to float3, this allows the math to be written more succintly
+
+__kernel void KERNEL_1_0(
+    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float3 *out_vel_A,
+  __global float3 *out_omg_A,
+  __global float3 *out_vel_B,
+  __global float3 *out_omg_B,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 gam = gamma[id];
+    float3 _JxA = JxA[id], _JyA = JyA[id], _JzA = JzA[id];
+    float3 _JuA = JuA[id], _JvA = JvA[id], _JwA = JwA[id];
+    float3 _JxB = JxB[id], _JyB = JyB[id], _JzB = JzB[id];
+    float3 _JuB = JuB[id], _JvB = JvB[id], _JwB = JwB[id];
+
+    out_vel_A[id] = _JxA*gam.x+_JyA*gam.y+_JzA*gam.z;
+    out_omg_A[id] = _JuA*gam.x+_JvA*gam.y+_JwA*gam.z;
+    out_vel_B[id] = _JxB*gam.x+_JyB*gam.y+_JzB*gam.z;
+    out_omg_B[id] = _JuB*gam.x+_JvB*gam.y+_JwB*gam.z;
+
+}
+
+###Version 1.5
+Use host pointer in calls. This allows memory already allocated on the host to be used instead of re-allocating. Also if using a GPU or accelerator, this will copy memory to the device when used. (This can be slow)
+
+~~~
+cl_mem d_jxA = clCreateBuffer(context,  CL_MEM_READ_ONLY , contacts * sizeof(cl_float3), NULL, NULL);
+//Changes to:
+cl_mem d_jxA = clCreateBuffer(context,  CL_MEM_USE_HOST_PTR , contacts * sizeof(cl_float3), h_jxA , NULL);
+~~~
+
+###Version 1.6
+float16 math
+
+~~~
+__kernel void KERNEL_1_0(
+    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float3 *out_vel_A,
+  __global float3 *out_omg_A,
+  __global float3 *out_vel_B,
+  __global float3 *out_omg_B,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 gam = gamma[id];
+    float3 _JxA = JxA[id], _JyA = JyA[id], _JzA = JzA[id];
+    float3 _JuA = JuA[id], _JvA = JvA[id], _JwA = JwA[id];
+    float3 _JxB = JxB[id], _JyB = JyB[id], _JzB = JzB[id];
+    float3 _JuB = JuB[id], _JvB = JvB[id], _JwB = JwB[id];
+
+    float16 A;
+    A.s012 = _JxA; //3
+    A.s456 = _JuA; //7
+    A.s89a = _JxB; //b
+    A.scde = _JuB; //f
+
+    float16 B;
+    B.s012 = _JyA; //3
+    B.s456 = _JvA; //7
+    B.s89a = _JyB; //b
+    B.scde = _JvB; //f
+
+
+    float16 C;
+    C.s012 = _JzA; //3
+    C.s456 = _JwA; //7
+    C.s89a = _JzB; //b
+    C.scde = _JwB; //f
+
+    float16 result = A*gam.x+B*gam.y+C*gam.z;
+
+    out_vel_A[id] = result.s012;
+    out_omg_A[id] = result.s456;
+    out_vel_B[id] = result.s89a;
+    out_omg_B[id] = result.scde;
+
+}
+~~~
+
+###Version 1.7
+float8 math
+
+~~~
+__kernel void KERNEL_1_0(
+    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float3 *out_vel_A,
+  __global float3 *out_omg_A,
+  __global float3 *out_vel_B,
+  __global float3 *out_omg_B,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 gam = gamma[id];
+    
+    float8 A,B,C, result;
+    A.s012 = JxA[id]; //3
+    A.s456 = JuA[id]; //7
+
+    B.s012 = JyA[id]; //3
+    B.s456 = JvA[id]; //7
+
+    C.s012 = JzA[id]; //3
+    C.s456 = JwA[id]; //7
+
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_vel_A[id] = result.s012;
+    out_omg_A[id] = result.s456;
+
+
+    A.s012 = JxB[id]; //3
+    A.s456 = JuB[id]; //7
+
+    B.s012 = JyB[id]; //3
+    B.s456 = JvB[id]; //7
+
+    C.s012 = JzB[id]; //3
+    C.s456 = JwB[id]; //7
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_vel_B[id] = result.s012;
+    out_omg_B[id] = result.s456;
+
+
+}
+~~~
+
+###Version 1.8
+float8 math and store
+Interestingly this code will cause a segmentation fault. After a bit of digging around there is a bug in the avx implementation for float8 [link] (http://devgurus.amd.com/message/1279909#1279909) Adding in the -fdisable-avx flag allows the code to run. Interestingly the performance does not suffer. 
+~~~
+__kernel void KERNEL_1_0(
+    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float8 *out_A,
+  __global float8 *out_B,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 gam = gamma[id];
+    
+    float8 A,B,C, result;
+    A.s012 = JxA[id]; //3
+    A.s456 = JuA[id]; //7
+
+    B.s012 = JyA[id]; //3
+    B.s456 = JvA[id]; //7
+
+    C.s012 = JzA[id]; //3
+    C.s456 = JwA[id]; //7
+
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_A[id] = result;
+
+    A.s012 = JxB[id]; //3
+    A.s456 = JuB[id]; //7
+
+    B.s012 = JyB[id]; //3
+    B.s456 = JvB[id]; //7
+
+    C.s012 = JzB[id]; //3
+    C.s456 = JwB[id]; //7
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_B[id] = result;
+}
+~~~
+
+
+
+
+
+
