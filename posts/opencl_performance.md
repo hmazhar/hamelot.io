@@ -289,7 +289,7 @@ Output_A and Output_B can be changed.
 
 ##Performance Table:
 For each test I will compute with 1,024,000 contacts.
-
+#### OpenCL:
 | Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
 |---------  |-----------  |-------- |---------  |-------------- |------------ |
 | 1.0       | 17.947      | 3.423   | 10.840    | 1.36          | 20.60       |
@@ -301,6 +301,13 @@ For each test I will compute with 1,024,000 contacts.
 | 1.6       | 6.244       | 9.841   | 31.163    | 3.99          | 60.41       |
 | 1.7       | 6.107       | 10.069  | 31.884    | 4.08          | 61.80       |
 | 1.8       | 6.063       | 10.144  | 32.122    | 4.12          | 62.26       |
+
+####OpenMP
+| Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
+|---------  |-----------  |-------- |---------  |-------------- |------------ |
+| 1.0       | 17.081      | 3.611   | 11.435    | 1.46          | 22.17       |
+| 1.4       | 7.187       | 8.672   | 27.461    | 3.52          | 53.23       |
+
 
 ###Version 1.0
 Basic implementation using floats. Too many function arguments and not very fun to write.
@@ -472,6 +479,7 @@ __kernel void KERNEL_1_0(
 ###Version 1.4
 Store values to float3, this allows the math to be written more succintly
 
+~~~
 __kernel void KERNEL_1_0(
     __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
@@ -499,6 +507,7 @@ __kernel void KERNEL_1_0(
     out_omg_B[id] = _JuB*gam.x+_JvB*gam.y+_JwB*gam.z;
 
 }
+~~~
 
 ###Version 1.5
 Use host pointer in calls. This allows memory already allocated on the host to be used instead of re-allocating. Also if using a GPU or accelerator, this will copy memory to the device when used. (This can be slow)
