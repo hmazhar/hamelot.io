@@ -290,6 +290,7 @@ Output_A and Output_B can be changed.
 ##Performance Table:
 For each test I will compute with 1,024,000 contacts.
 #### OpenCL:
+
 | Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
 |---------  |-----------  |-------- |---------  |-------------- |------------ |
 | 1.0       | 17.947      | 3.423   | 10.840    | 1.36          | 20.60       |
@@ -303,6 +304,7 @@ For each test I will compute with 1,024,000 contacts.
 | 1.8       | 6.063       | 10.144  | 32.122    | 4.12          | 62.26       |
 
 ####OpenMP
+
 | Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
 |---------  |-----------  |-------- |---------  |-------------- |------------ |
 | 1.0       | 17.081      | 3.611   | 11.435    | 1.46          | 22.17       |
@@ -626,12 +628,13 @@ __kernel void KERNEL_1_0(
 
 ###Version 1.8
 float8 math and store
-Interestingly this code will cause a segmentation fault. After a bit of digging around there is a bug in the avx implementation for float8 [link] (http://devgurus.amd.com/message/1279909#1279909) Adding in the -fdisable-avx flag allows the code to run. Interestingly the performance does not suffer. 
+Interestingly this code will cause a segmentation fault. After a bit of digging around there is a bug in the avx implementation for float8 [link](http://devgurus.amd.com/message/1279909#1279909) Adding in the -fdisable-avx flag allows the code to run. Interestingly the performance does not suffer. 
+
 ~~~
 __kernel void KERNEL_1_0(
-    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
-    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
   __global float8 *out_A,
