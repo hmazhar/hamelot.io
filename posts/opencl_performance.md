@@ -295,13 +295,16 @@ For each test I will compute with 1,024,000 contacts.
 |---------  |-----------  |-------- |---------  |-------------- |------------ |
 | 1.0       | 17.947      | 3.423   | 10.840    | 1.36          | 20.60       |
 | 1.1       | 17.185      | 3.575   | 11.321    | 1.45          | 21.94       |
-| 1.2       | 7.014       | 8.764   | 27.752    | 3.56          | 53.79       |
-| 1.3       | 6.856       | 8.964   | 28.385    | 3.64          | 55.02       |
-| 1.4       | 6.79        | 9.055   | 28.673    | 3.67          | 55.58       |
-| 1.5       | 6.088       | 10.093  | 31.959    | 4.09          | 61.95       |
-| 1.6       | 6.244       | 9.841   | 31.163    | 3.99          | 60.41       |
-| 1.7       | 6.107       | 10.069  | 31.884    | 4.08          | 61.80       |
-| 1.8       | 6.063       | 10.144  | 32.122    | 4.12          | 62.26       |
+| 1.2       | 6.984       | 8.764   | 37.145    | 3.57          | 72.00       |
+| 1.3       | 6.856       | 8.964   | 37.778    | 3.64          | 73.23       |
+| 1.4       | 6.79        | 9.055   | 38.066    | 3.67          | 73.79       |
+| 1.5       | 6.088       | 10.093  | 41.352    | 4.09          | 80.16       |
+| 1.6       | 6.244       | 9.841   | 40.556    | 3.99          | 78.61       |
+| 1.7       | 6.107       | 10.069  | 41.277    | 4.08          | 80.01       |
+| 1.8       | 6.063       | 10.144  | 41.515    | 4.12          | 80.47       |
+| 1.9       | 5.06        | 12.145  | 42.229    | 4.93          | 81.86       |
+| 2.0       | 4.382       | 14.024  | 41.796    | 5.69          | 81.02       |
+| 2.1       | 4.345       | 14.156  | 42.188    | 5.74          | 81.78       |
 
 ####OpenMP
 
@@ -309,7 +312,7 @@ For each test I will compute with 1,024,000 contacts.
 |---------  |-----------  |-------- |---------  |-------------- |------------ |
 | 1.0       | 17.081      | 3.611   | 11.435    | 1.46          | 22.17       |
 | 1.4       | 7.187       | 8.672   | 27.461    | 3.52          | 53.23       |
-
+| 2.0       | 5.312       | 11.846  | 35.304    | 4.81          | 68.43       |
 
 ###Version 1.0
 Basic implementation using floats. Too many function arguments and not very fun to write.
@@ -354,7 +357,7 @@ __kernel void KERNEL_1_0(
 ~~~
 
 ###Version 1.1
-Switch up the way the memory is layed out. 
+Switch up the way the memory is layed out. Rather than indexing by the contact number for each constraint, transpose the data. This does mean that that when storing the data the order needs to be changed.
 
 ~~~
 __kernel void KERNEL_1_0(
@@ -627,8 +630,8 @@ __kernel void KERNEL_1_0(
 ~~~
 
 ###Version 1.8
-float8 math and store
-Interestingly this code will cause a segmentation fault. After a bit of digging around there is a bug in the avx implementation for float8 [link](http://devgurus.amd.com/message/1279909#1279909) Adding in the -fdisable-avx flag allows the code to run. Interestingly the performance does not suffer. 
+float8 math and store. 
+Weirdly, this code will cause a segmentation fault. After a bit of digging around there is a bug in the avx implementation for float8 [link](http://devgurus.amd.com/message/1279909#1279909) Adding in the -fdisable-avx flag allows the code to run. Interestingly the performance does not suffer. 
 
 ~~~
 __kernel void KERNEL_1_0(
@@ -672,8 +675,171 @@ __kernel void KERNEL_1_0(
 }
 ~~~
 
+###Version 1.9
+Knowing a bit more about my problem, I can say that the entries in JxB are the negative of the entries in JxA. This is due to the way that contact jacobians are computed. The same does not hold true for the rotational components of the jacobians. 
+
+~~~
+__kernel void KERNEL_1_0(
+    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float8 *out_A,
+  __global float8 *out_B,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 gam = gamma[id];
+    
+    float8 A,B,C, result;
+    A.s012 = JxA[id]; //3
+    A.s456 = JuA[id]; //7
+
+    B.s012 = JyA[id]; //3
+    B.s456 = JvA[id]; //7
+
+    C.s012 = JzA[id]; //3
+    C.s456 = JwA[id]; //7
+
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_A[id] = result;
+
+    A.s012 = -JxA[id]; //3
+    A.s456 = JuB[id]; //7
+
+    B.s012 = -JyA[id]; //3
+    B.s456 = JvB[id]; //7
+
+    C.s012 = -JzA[id]; //3
+    C.s456 = JwB[id]; //7
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_B[id] = result;
 
 
+}
+~~~
+
+###Version 2.0
+With 2.0 I explicitly compute the three vectors in the Jacobian from the contact normal. This decreases the amount of memory I need to read in. Note that I still need to disable avx because of the float 8 store. THe next version will see what happens with avx enabled and float4 stores
+
+~~~
+
+__kernel void KERNEL_1_0(
+    __global float3 *norm, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float8 *out_A,
+  __global float8 *out_B,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
 
 
+    float3 U = norm[id], V, W;
+  W = cross(U, (float3)(0, 1, 0));
+  float mzlen = length(W);
+
+  if (mzlen < 0.0001f) { 
+    float3 mVsingular = (float3)(1, 0, 0);
+    W = cross(U, mVsingular);
+    mzlen = length(W);
+  }
+  W = W * 1.0f / mzlen;
+  V = cross(W, U);
+
+    float3 gam = gamma[id];
+    
+    float8 A,B,C, result;
+    A.s012 = -U; //3
+    A.s456 = JuA[id]; //7
+
+    B.s012 = -V; //3
+    B.s456 = JvA[id]; //7
+
+    C.s012 = -W; //3
+    C.s456 = JwA[id]; //7
+
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_A[id] = result;
+
+    A.s012 = U; //3
+    A.s456 = JuB[id]; //7
+
+    B.s012 = V; //3
+    B.s456 = JvB[id]; //7
+
+    C.s012 = W; //3
+    C.s456 = JwB[id]; //7
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_B[id] = result;
+}
+
+~~~
+
+###Version 2.1
+Back to using float4, meaning that I can re-enable AVX, performance doesn't chagne much sadly
+
+~~~
+
+__kernel void KERNEL_1_0(
+    __global float3 *norm, 
+  __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
+  __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
+  __global float3 *gamma,
+  __global float3 *out_vel_A,
+  __global float3 *out_omg_A,
+  __global float3 *out_vel_B,
+  __global float3 *out_omg_B,
+  const unsigned int n_contact)
+{
+    int id = get_global_id(0);
+    if (id >= n_contact){return;}
+
+    float3 U = norm[id], V, W;
+  W = cross(U, (float3)(0, 1, 0));
+  float mzlen = length(W);
+
+  if (mzlen < 0.0001f) { 
+    float3 mVsingular = (float3)(1, 0, 0);
+    W = cross(U, mVsingular);
+    mzlen = length(W);
+  }
+  W = W * 1.0f / mzlen;
+  V = cross(W, U);
+
+    float3 gam = gamma[id];
+    
+    float8 A,B,C, result;
+    A.s012 = -U; //3
+    A.s456 = JuA[id]; //7
+
+    B.s012 = -V; //3
+    B.s456 = JvA[id]; //7
+
+    C.s012 = -W; //3
+    C.s456 = JwA[id]; //7
+
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_vel_A[id] = result.s012;
+    out_omg_A[id] = result.s456;
+
+    A.s012 = U; //3
+    A.s456 = JuB[id]; //7
+
+    B.s012 = V; //3
+    B.s456 = JvB[id]; //7
+
+    C.s012 = W; //3
+    C.s456 = JwB[id]; //7
+    result = A*gam.x+B*gam.y+C*gam.z;
+    out_vel_B[id] = result.s012;
+    out_omg_B[id] = result.s456;
+}
+
+~~~
 
