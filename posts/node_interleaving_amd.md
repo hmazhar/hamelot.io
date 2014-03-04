@@ -56,7 +56,12 @@ Platform: AMD Accelerated Parallel Processing
 
 ~~~
 
+
+
 Good Compute Node:
+
+~~~
+
 Platform: AMD Accelerated Parallel Processing
   Device: AMD Opteron(TM) Processor 6274                 
     Driver version  : 1214.3 (sse2,avx,fma4) (Linux x64)
