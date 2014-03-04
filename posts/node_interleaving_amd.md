@@ -6,17 +6,19 @@ categories: [programming]
 tags: [bios, amd, programming]
 ---
 
-The important message of this post is that enabling Node Interleaving in the bios can greatly increase performance. Node interleaving essentially lets the CPU decide where to put the memory, disabling it means that the user must explicitly tell where in memory to put data so that the associated CPU gets best performance. 
-
-The end result, a 4-5x performance increase in terms of memory bandwidth. 
+Enabling Node Interleaving in the bios can greatly increase performance of a compute node. Node interleaving essentially lets the CPU decide where to put the memory, disabling it means that the user must explicitly tell where in memory to put data so that the associated CPU gets best performance. 
 
 An explanation of Node Interleaving can be found [here](http://frankdenneman.nl/2010/12/28/node-interleaving-enable-or-disable/)
 
-Note that I will be talking about Bios version 2.0 here.
+The end result, a 4-5x performance increase in terms of memory bandwidth. 
+
+
+
+
 In our lab we have several 64 core AMD nodes with the following specs:
 
-Supermicro HBQGL-6F/HBQGL-IF
-Supermicro 1042-LTF SuperServer
+- Supermicro HBQGL-6F/HBQGL-IF
+- Supermicro 1042-LTF SuperServer
 
 | Processor          | AMD 6274    |
 |-------------------:|------------:|
@@ -33,7 +35,7 @@ Supermicro 1042-LTF SuperServer
 | L2 cache/# cores   | 2MB/2       |
 | L3 cache/# cores   | 8MB/8       |
 
-I noticed a week ago that one of the nodes was performing horribly compared to the other so I decided to do some digging. I installed AMDAPPSDK on both machines and ran the clpeak benchmark with the following results:
+I noticed a a few days ago that one of the nodes was performing horribly compared to the other so I decided to do some digging. I installed AMDAPPSDK on both machines and ran the clpeak benchmark with the following results:
 
 Bad Compute Node:
 
@@ -84,6 +86,10 @@ I omitted the Flop rates of both nodes as they were identical.
 By enabling Node interleaving, the performance increases dramatically. 
 
 
+### Bios Configuration
+
+Note that I will be talking about Bios version 2.0 here.
+
 I am going to provide the bios configuration of the faster machine for the CPU and the Memory options
 
 Bios->Advanced->Processor & Clock Options
@@ -118,7 +124,7 @@ Bios->Advanced->Advanced Chipset Control -> NorthBridge Configuration ->Memory C
 ~~~
 
 Bank Interleaving [Auto]
-Node Interleaving [Auto]
+Node Interleaving [Auto]		THE MOST IMPORTANT CHANGE
 Channel Interleaving [Auto]
 CS Sparing Enable [Disabled]
 Bank Swizzle Mode [Enabled]
