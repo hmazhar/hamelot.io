@@ -291,7 +291,7 @@ Output_A and Output_B can be changed.
 For each test I will compute with 1,024,000 contacts.
 #### OpenCL:
 
-| Version   | Time [ms]   | Giga flops | Bandwidth GB/s      | % max GFlops  | % max GB/s  |
+|-Version-|-Time [ms]-|-Giga flops-|-Bandwidth GB/s-|-% max GFlops-|-% max GB/s-|
 |:--------- |:----------- |-----------:|----------:|--------------:|------------:|
 | 1.0       | 17.947      | 3.423      | 10.840    | 1.36          | 20.60       |
 | 1.1       | 17.185      | 3.575      | 11.321    | 1.45          | 21.94       |
