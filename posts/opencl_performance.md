@@ -289,6 +289,7 @@ Output_A and Output_B can be changed.
 
 ##Performance Table:
 For each test I will compute with 1,024,000 contacts.
+
 #### OpenCL:
 
 |-Version-|-Time [ms]-|-Giga flops-|-Bandwidth GB/s-|-% max GFlops-|-% max GB/s-|
@@ -310,7 +311,7 @@ For each test I will compute with 1,024,000 contacts.
 
 I wrote an identical impelementation in OpenMP for comparison
 
-| Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
+|-Version-|-Time [ms]-|-Giga flops-|-Bandwidth GB/s-|-% max GFlops-|-% max GB/s-|
 |---------  |-----------  |-------- |---------  |-------------- |------------ |
 | 1.0       | 17.081      | 3.611   | 11.435    | 1.46          | 22.17       |
 | 1.4       | 7.187       | 8.672   | 27.461    | 3.52          | 53.23       |
