@@ -292,7 +292,7 @@ For each test I will compute with 1,024,000 contacts.
 #### OpenCL:
 
 | Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
-|---------  |-----------  |-------- |---------  |-------------- |------------ |
+|:--------- |:----------- |--------:|----------:|--------------:|------------:|
 | 1.0       | 17.947      | 3.423   | 10.840    | 1.36          | 20.60       |
 | 1.1       | 17.185      | 3.575   | 11.321    | 1.45          | 21.94       |
 | 1.2       | 6.984       | 8.764   | 37.145    | 3.57          | 72.00       |
@@ -308,11 +308,16 @@ For each test I will compute with 1,024,000 contacts.
 
 ####OpenMP
 
+I wrote an identical impelementation in OpenMP for comparison
+
 | Version   | Time [ms]   | Gflops  | GB/s      | % max GFlops  | % max GB/s  |
 |---------  |-----------  |-------- |---------  |-------------- |------------ |
 | 1.0       | 17.081      | 3.611   | 11.435    | 1.46          | 22.17       |
 | 1.4       | 7.187       | 8.672   | 27.461    | 3.52          | 53.23       |
 | 2.0       | 5.312       | 11.846  | 35.304    | 4.81          | 68.43       |
+
+
+##Kernel Versions
 
 ###Version 1.0
 Basic implementation using floats. Too many function arguments and not very fun to write.
@@ -320,9 +325,9 @@ Memory is organized on a per contact basis. For the jacobians, memory for each r
 
 ~~~
 __kernel void KERNEL_1_0(
-    __global float *JxA, __global float *JyA, __global float *JzA, 
-    __global float *JuA, __global float *JvA, __global float *JwA, 
-    __global float *JxB, __global float *JyB, __global float *JzB, 
+  __global float *JxA, __global float *JyA, __global float *JzA, 
+  __global float *JuA, __global float *JvA, __global float *JwA, 
+  __global float *JxB, __global float *JyB, __global float *JzB, 
 	__global float *JuB, __global float *JvB, __global float *JwB, 
 	__global float *gamma_x, __global float *gamma_y, __global float *gamma_z,
 	__global float *out_vel_xA, __global float *out_vel_yA, __global float *out_vel_zA,
@@ -360,10 +365,10 @@ __kernel void KERNEL_1_0(
 Switch up the way the memory is layed out. Rather than indexing by the contact number for each constraint, transpose the data. This does mean that that when storing the data the order needs to be changed.
 
 ~~~
-__kernel void KERNEL_1_0(
-    __global float *JxA, __global float *JyA, __global float *JzA, 
-    __global float *JuA, __global float *JvA, __global float *JwA, 
-    __global float *JxB, __global float *JyB, __global float *JzB, 
+__kernel void KERNEL_1_1(
+  __global float *JxA, __global float *JyA, __global float *JzA, 
+  __global float *JuA, __global float *JvA, __global float *JwA, 
+  __global float *JxB, __global float *JyB, __global float *JzB, 
   __global float *JuB, __global float *JvB, __global float *JwB, 
   __global float *gamma_x, __global float *gamma_y, __global float *gamma_z,
   __global float *out_vel_xA, __global float *out_vel_yA, __global float *out_vel_zA,
@@ -403,7 +408,7 @@ Based on the clpeak benchmark using float4 should give me better performance.
 Note that here I am using float3 which is stored as a float4 in memory. 
 
 ~~~
-__kernel void KERNEL_1_0(
+__kernel void KERNEL_1_2(
   __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
   __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
@@ -442,10 +447,10 @@ __kernel void KERNEL_1_0(
 Preload all of the data into registers
 
 ~~~
-__kernel void KERNEL_1_0(
-    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+__kernel void KERNEL_1_3(
+  __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
-    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
   __global float *out_vel_xA, __global float *out_vel_yA, __global float *out_vel_zA,
@@ -485,10 +490,10 @@ __kernel void KERNEL_1_0(
 Store values to float3, this allows the math to be written more succintly
 
 ~~~
-__kernel void KERNEL_1_0(
-    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+__kernel void KERNEL_1_4(
+  __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
-    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
   __global float3 *out_vel_A,
@@ -527,10 +532,10 @@ cl_mem d_jxA = clCreateBuffer(context,  CL_MEM_USE_HOST_PTR , contacts * sizeof(
 float16 math
 
 ~~~
-__kernel void KERNEL_1_0(
-    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+__kernel void KERNEL_1_6(
+  __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
-    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
   __global float3 *out_vel_A,
@@ -581,10 +586,10 @@ __kernel void KERNEL_1_0(
 float8 math
 
 ~~~
-__kernel void KERNEL_1_0(
-    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+__kernel void KERNEL_1_7(
+  __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
-    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
   __global float3 *out_vel_A,
@@ -634,7 +639,7 @@ float8 math and store.
 Weirdly, this code will cause a segmentation fault. After a bit of digging around there is a bug in the avx implementation for float8 [link](http://devgurus.amd.com/message/1279909#1279909) Adding in the -fdisable-avx flag allows the code to run. Interestingly the performance does not suffer. 
 
 ~~~
-__kernel void KERNEL_1_0(
+__kernel void KERNEL_1_8(
   __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
   __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
@@ -679,10 +684,10 @@ __kernel void KERNEL_1_0(
 Knowing a bit more about my problem, I can say that the entries in JxB are the negative of the entries in JxA. This is due to the way that contact jacobians are computed. The same does not hold true for the rotational components of the jacobians. 
 
 ~~~
-__kernel void KERNEL_1_0(
-    __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
+__kernel void KERNEL_1_9(
+  __global float3 *JxA, __global float3 *JyA, __global float3 *JzA, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
-    __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
+  __global float3 *JxB, __global float3 *JyB, __global float3 *JzB, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
   __global float8 *out_A,
@@ -727,8 +732,8 @@ With 2.0 I explicitly compute the three vectors in the Jacobian from the contact
 
 ~~~
 
-__kernel void KERNEL_1_0(
-    __global float3 *norm, 
+__kernel void KERNEL_2_0(
+  __global float3 *norm, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
@@ -786,8 +791,8 @@ Back to using float4, meaning that I can re-enable AVX, performance doesn't chag
 
 ~~~
 
-__kernel void KERNEL_1_0(
-    __global float3 *norm, 
+__kernel void KERNEL_2_1(
+  __global float3 *norm, 
   __global float3 *JuA, __global float3 *JvA, __global float3 *JwA, 
   __global float3 *JuB, __global float3 *JvB, __global float3 *JwB, 
   __global float3 *gamma,
