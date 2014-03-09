@@ -158,7 +158,7 @@ For each machine I ran using the maximum number of virtual cores available.
 
 ####Results
 
-
+{:id: class="table"}
 | CPU                                 | Memory Speed | Peak Bandwidth | Bandwidth Reached | Percent of Peak |
 |-------------------------------------|--------------|----------------|-------------------|-----------------|
 | 4 x AMD Opteron 6274                | 1333Mhz      | 166.56 GB/s    | 51 GB/s           | 30%             |
