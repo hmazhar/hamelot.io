@@ -125,7 +125,7 @@ At this point its a simple matter of deciding what we are interested in. In this
 
 ###The Code:
 
-The code is availible [here](https://github.com/hmazhar/ompeak) with instructions on how to use it.
+The code is availible [here](http://hmazhar.github.io/ompeak/) with instructions on how to use it.
 
 
 ###The results:
