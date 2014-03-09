@@ -158,14 +158,14 @@ For each machine I ran using the maximum number of virtual cores available.
 
 ####Results
 
-{:id: class="table"}
+
 | CPU                                 | Memory Speed | Peak Bandwidth | Bandwidth Reached | Percent of Peak |
 |-------------------------------------|--------------|----------------|-------------------|-----------------|
 | 4 x AMD Opteron 6274                | 1333Mhz      | 166.56 GB/s    | 51 GB/s           | 30%             |
 | 2 x Intel(R) Xeon(R) CPU E5-2630    | 1333Mhz      | 83.28 GB/s     | 45 GB/s           | 54%             |
 | 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 31 GB/s           | 31%             |
 | 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 28 GB/s           | 56%             |
-
+{:.table}
  
 
 We can compare these results to those from clpeak for the 4 x AMD Opteron 6274 where we also get around 51GB/s for the float4 case. 
