@@ -34,6 +34,8 @@ In our lab we have several 64 core AMD nodes with the following specs:
 | L1 cache (excl.)   | 16KB        |
 | L2 cache/# cores   | 2MB/2       |
 | L3 cache/# cores   | 8MB/8       |
+{:.table}
+
 
 I noticed a a few days ago that one of the nodes was performing horribly compared to the other so I decided to do some digging. I installed AMDAPPSDK on both machines and ran the clpeak benchmark with the following results:
 
