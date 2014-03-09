@@ -144,7 +144,7 @@ The memory bandwidth peaks at around 51 GB/s
 
 ./ompeak 64
 
-       0.25  0.50  1.00  2.00  4.00  8.00  16.00   32.00   64.00   128.00  256.00  512.00 
+      0.25   0.50    1.00    2.00    4.00    8.00    16.00   32.00   64.00   128.00  256.00  512.00 
   1  5.282   5.506   5.445   5.623   5.707   5.730   5.717   5.758   5.764   5.767   5.766   1.922  
   2  7.329   8.763   8.771   9.149   9.234   10.452  10.007  10.274  10.062  9.873   10.020  3.381  
   3  11.134  12.971  13.225  13.012  13.526  15.036  13.530  14.785  13.384  13.647  13.473  4.578  
@@ -210,11 +210,13 @@ The memory bandwidth peaks at around 51 GB/s
  63  13.969  24.447  26.220  34.579  39.991  45.326  45.543  48.638  45.934  46.861  49.023  16.075 
  64  0.060   23.678  37.057  33.739  34.412  35.900  40.706  42.559  38.760  46.545  48.766  15.724
  
- ~~~
+~~~
  
- We can compare these results to those from clpeak where we also get around 51GB/s for the float4 case. 
+
+We can compare these results to those from clpeak where we also get around 51GB/s for the float4 case. 
  
- ~~~
+ 
+~~~
  
 Platform: AMD Accelerated Parallel Processing
 Device: AMD Opteron(TM) Processor 6274                 
