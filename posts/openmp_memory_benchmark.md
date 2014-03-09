@@ -13,7 +13,7 @@ I set out to write my own and by going through this process learned about some o
 
 
 ###The problem:
-I want to write a simple benchmark that takes advantage of two things SSE data structures, and OpenMP Parallelism. 
+I want to write a simple benchmark that takes advantage of two things, SSE data structures, and OpenMP Parallelism. 
 The SSE code I require for the memory bandwidth test is minimal and can be summarized as follows:
 
 ####SSE Float4 class:
@@ -132,8 +132,9 @@ The code is availible [here](https://github.com/hmazhar/ompeak) with instruction
 
 I ran the benchmarks on the following machine:
 
-4 x AMD Opteron 6274 2.2GHz 16 core processor
-128GB DDR3 (1333Mhz)
+- 4 x AMD Opteron 6274 2.2GHz 16 core processor
+- 128GB DDR3 (1333Mhz)
+
 - (1333Mhz) x 64 divided by 8 = Memory Bandwidth = ~10.41 GB/s
 - AMD supports quad channel 4x10.41 = ~41.64 GB/s
 - Total system bandwidth = 4x41.64 = ~166.56 GB/s
@@ -215,7 +216,7 @@ The memory bandwidth peaks at around 51 GB/s
 
 We can compare these results to those from clpeak where we also get around 51GB/s for the float4 case. 
  
- 
+
 ~~~
  
 Platform: AMD Accelerated Parallel Processing
