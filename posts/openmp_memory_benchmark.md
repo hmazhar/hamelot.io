@@ -166,13 +166,11 @@ For each machine I ran using the maximum number of virtual cores available.
 | 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 31 GB/s           | 31%             |
 | 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 28 GB/s           | 56%             |
 
-
-~~~
  
 
 We can compare these results to those from clpeak for the 4 x AMD Opteron 6274 where we also get around 51GB/s for the float4 case. 
  
- 
+
 ~~~
  
 Platform: AMD Accelerated Parallel Processing
