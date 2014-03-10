@@ -156,36 +156,24 @@ For each machine I ran using the maximum number of virtual cores available.
 - Total system bandwidth = 2x50 = ~100 GB/s
 
 
-####Results
+####Results for different memory benchmark software
 
-
+| OpenMP results                                                                                            |
 | CPU                                 | Memory Speed | Peak Bandwidth | Bandwidth Reached | Percent of Peak |
 |-------------------------------------|--------------|----------------|-------------------|-----------------|
-| 4 x AMD Opteron 6274                | 1333Mhz      | 166.56 GB/s    | 51 GB/s           | 30%             |
-| 2 x Intel(R) Xeon(R) CPU E5-2630    | 1333Mhz      | 83.28 GB/s     | 45 GB/s           | 54%             |
-| 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 31 GB/s           | 31%             |
-| 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 28 GB/s           | 56%             |
+| 4 x AMD Opteron 6274                | 1333Mhz      | 166.56 GB/s    | 44 GB/s           | 26%             |
+| 2 x Intel(R) Xeon(R) CPU E5-2630    | 1333Mhz      | 83.28 GB/s     | 51.6 GB/s         | 62%             |
+| 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 33.5 GB/s         | 34%             |
+| 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 17.9 GB/s         | 36%             |
+{:.table}
+
+| AMD OpenCL results (clpeak)                                                                               |
+| CPU                                 | Memory Speed | Peak Bandwidth | Bandwidth Reached | Percent of Peak |
+|-------------------------------------|--------------|----------------|-------------------|-----------------|
+| 4 x AMD Opteron 6274                | 1333Mhz      | 166.56 GB/s    | 65.8 GB/s         | 39%             |
+| 2 x Intel(R) Xeon(R) CPU E5-2630    | 1333Mhz      | 83.28 GB/s     | 20.1 GB/s         | 24%             |
+| 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 21.8 GB/s         | 22%             |
+| 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 18.56 GB/s        | 37%             |
 {:.table}
  
 
-We can compare these results to those from clpeak for the 4 x AMD Opteron 6274 where we also get around 51GB/s for the float4 case. 
- 
-
-~~~
- 
-Platform: AMD Accelerated Parallel Processing
-Device: AMD Opteron(TM) Processor 6274                 
-Driver version  : 1214.3 (sse2,avx,fma4) (Linux x64)
-Compute units   : 64
-Clock frequency : 2205 MHz
-
-Global memory bandwidth (GBPS)
-  float   : 37.40
-  float2  : 42.05
-  float4  : 51.59
-  float8  : 49.55
-  float16 : 47.10
-
-...
-
-~~~

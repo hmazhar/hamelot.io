@@ -1,7 +1,7 @@
 source "https://rubygems.org"
-gem 'psych', "~> 1.3"
-gem 'ruhoh', "~> 2.1"
-
+gem 'ruhoh', "~> 2.6"
+gem 'kramdown'
+#gem 'psych', "~> 1.3"
 # To enable asset packaging and processing via sprockets:
 #
 #   1. Update your config.yml file:
