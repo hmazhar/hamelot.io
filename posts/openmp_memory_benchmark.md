@@ -159,7 +159,7 @@ For each machine I ran using the maximum number of virtual cores available.
 | OpenMP results                                                                                            |
 | CPU                                 | Memory Speed | Peak Bandwidth | Bandwidth Reached | Percent of Peak |
 |-------------------------------------|--------------|----------------|-------------------|-----------------|
-| 4 x AMD Opteron 6274                | 1333Mhz      | 166.56 GB/s    | 52.2 GB/s         | 31%             |
+| 4 x AMD Opteron 6274                | 1333Mhz      | 166.56 GB/s    | 56.2 GB/s         | 34%             |
 | 2 x Intel(R) Xeon(R) CPU E5-2630    | 1333Mhz      | 83.28 GB/s     | 51.6 GB/s         | 62%             |
 | 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 36.7 GB/s         | 37%             |
 | 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 17.9 GB/s         | 36%             |
