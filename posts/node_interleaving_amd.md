@@ -21,7 +21,7 @@ In our lab we have several 64 core AMD nodes with the following specs:
 - Supermicro 1042-LTF SuperServer
 
 | Processor          | AMD 6274    |
-|-------------------:|------------:|
+|--------------------|-------------|
 | Nickname           | Interlagos  |
 | Clock (GHz)        | 2.2         |
 | Sockets/Node       | 4           |
@@ -34,7 +34,7 @@ In our lab we have several 64 core AMD nodes with the following specs:
 | L1 cache (excl.)   | 16KB        |
 | L2 cache/# cores   | 2MB/2       |
 | L3 cache/# cores   | 8MB/8       |
-{:.table}
+{:.table .table-condensed}
 
 
 I noticed a a few days ago that one of the nodes was performing horribly compared to the other so I decided to do some digging. I installed AMDAPPSDK on both machines and ran the clpeak benchmark with the following results:

@@ -165,7 +165,7 @@ For each machine I ran using the maximum number of virtual cores available.
 | 2 x Intel(R) Xeon(R) CPU E5-2630    | 1333Mhz      | 83.28 GB/s     | 51.6 GB/s         | 62%             |
 | 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 33.5 GB/s         | 34%             |
 | 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 17.9 GB/s         | 36%             |
-{:.table}
+{:.table .table-condensed}
 
 | AMD OpenCL results (clpeak)                                                                               |
 | CPU                                 | Memory Speed | Peak Bandwidth | Bandwidth Reached | Percent of Peak |
@@ -174,6 +174,6 @@ For each machine I ran using the maximum number of virtual cores available.
 | 2 x Intel(R) Xeon(R) CPU E5-2630    | 1333Mhz      | 83.28 GB/s     | 20.1 GB/s         | 24%             |
 | 2 x Intel(R) Xeon(R) CPU E5-2690 v2 | 1600Mhz      | 100 GB/s       | 21.8 GB/s         | 22%             |
 | 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 18.56 GB/s        | 37%             |
-{:.table}
+{:.table .table-condensed}
  
 

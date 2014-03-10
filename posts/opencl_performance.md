@@ -34,7 +34,7 @@ The specifications for the test rig are as follows:
 | L1 cache (excl.)   | 16KB        |
 | L2 cache/# cores   | 2MB/2       |
 | L3 cache/# cores   | 8MB/8       |
-{:.table}
+{:.table .table-condensed}
 
 
 - 128GB DDR3 ECC Registered
@@ -307,7 +307,7 @@ For each test I will compute with 1,024,000 contacts.
 | 1.9       | 5.06        | 12.145     | 42.229    | 4.93          | 81.86       |
 | 2.0       | 4.382       | 29.450     | 41.796    | 11.95         | 81.02       |
 | 2.1       | 4.345       | 29.727     | 42.188    | 12.05         | 81.78       |
-{:.table}
+{:.table .table-condensed}
 
 ####OpenMP
 
@@ -318,7 +318,7 @@ I wrote an identical impelementation in OpenMP for comparison
 | 1.0       | 17.081      | 3.611   | 11.435    | 1.46          | 22.17       |
 | 1.4       | 7.187       | 8.672   | 27.461    | 3.52          | 53.23       |
 | 2.0       | 5.312       | 11.846  | 35.304    | 4.81          | 68.43       |
-{:.table}
+{:.table .table-condensed}
 
 ##Kernel Versions
 
