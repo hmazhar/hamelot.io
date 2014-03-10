@@ -61,11 +61,11 @@ Not much else is needed for our a basic bandwidth test.
 
 
 This code takes 4 float4 values, adds them together and then stores them. 
-This results in 4*3 load and store operations each with 4 floats each flaot being 4 bytes (192 bytes total).
+This results in 4*3 load and store operations each with 4 floats each float being 4 bytes (192 bytes total).
 
 ####Allocating memory:
 
-Even with the flaot4 aligned to 16 bytes, to absolutely make sure that the data is aligned we can use the _mm_malloc function. Use the associated _mm_free when finished. 
+Even with the float4 aligned to 16 bytes, to absolutely make sure that the data is aligned we can use the _mm_malloc function. Use the associated _mm_free when finished. 
 
 ~~~
 float4* A = (float4*) _mm_malloc (max_items*sizeof(float4), 16 );
@@ -93,7 +93,7 @@ Doing so leads to a problem:
 
 For small enough data sets (say 4-8MB) the memory bandwidth can be 2-8x greater than the maximum. for a data set of 4MB I have seen as high as 340 GB/s on a machine that could not do more than 166 GB/s (based on manufacturers specifications). 
 
-Why is ths? well when we generate the data it sits in the CPU cache waiting to be used, if we then try to load it, it loads from one of the L1, L2, or L3 caches much faster than the true bandwidth to memory. 
+Why is this? well when we generate the data it sits in the CPU cache waiting to be used, if we then try to load it, it loads from one of the L1, L2, or L3 caches much faster than the true bandwidth to memory. 
 
 The fix for this is simple, clear the cache:
 
@@ -108,7 +108,7 @@ void ClearCache(float4* C, float4* D, unsigned int ITEMS){
 
 ~~~
 
-In this case there ar etwo more float4 arrays (C, D) that are used after every test to clear the cache. The cache is cleared by forcing the CPU to load the two data sets and then store them. the value for ITEMS in this case should be larger than the cache size. Here I use something like 512 MB, which is overkill.
+In this case there are two more float4 arrays (C, D) that are used after every test to clear the cache. The cache is cleared by forcing the CPU to load the two data sets and then store them. the value for ITEMS in this case should be larger than the cache size. Here I use something like 512 MB, which is overkill.
 
 The code then looks something like this:
 
@@ -125,7 +125,7 @@ At this point its a simple matter of deciding what we are interested in. In this
 
 ###The Code:
 
-The code is availible [here](http://hmazhar.github.io/ompeak/) with instructions on how to use it.
+The code is available [here](http://hmazhar.github.io/ompeak/) with instructions on how to use it.
 
 
 ###The results:
