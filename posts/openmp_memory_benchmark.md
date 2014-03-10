@@ -81,8 +81,8 @@ Even though we could just allocate some memory and then use it, it is better if 
 
 #pragma omp parallel for 
     for (int i = 0; i < max_items; i++) {
-    A[i] = float4(i);
-    B[i] = float4(1.0/float(i));
+    A[i] = float4(i+1);
+    B[i] = float4(1.0/float(i+1));
   }
     
 ~~~
