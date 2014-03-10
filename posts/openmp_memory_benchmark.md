@@ -176,4 +176,61 @@ For each machine I ran using the maximum number of virtual cores available.
 | 2 x Intel(R) Xeon(R) CPU E5520      | 1066Mhz      | 49.92 GB/s     | 18.56 GB/s        | 37%             |
 {:.table .table-condensed}
  
+Memory Bandwidth demo: [post](http://codearcana.com/posts/2013/05/18/achieving-maximum-memory-bandwidth.html)
+
+
+| Memory Bandwidth demo                                                                             |
+| Memory Test                       | Xeon  E5520     | AMD  6274    | Intel E5-2690 | Intel E5-2630|
+|-----------------------------------|-----------------|--------------|---------------|--------------|
+| read_memory_rep_lodsq             | 8.77 GiB/s      | 2.25 GiB/s   | 11.56 GiB/s   | 8.26 GiB/s   |  
+| read_memory_loop                  | 9.98 GiB/s      | 3.00 GiB/s   | 15.50 GiB/s   | 11.52 GiB/s  | 
+| read_memory_sse                   | 10.04 GiB/s     | 2.79 GiB/s   | 15.55 GiB/s   | 11.95 GiB/s  | 
+| read_memory_avx                   |                 | 3.00 GiB/s   | 16.08 GiB/s   | 13.30 GiB/s  | 
+| read_memory_prefetch_avx          |                 | 2.98 GiB/s   | 16.56 GiB/s   | 12.70 GiB/s  | 
+| write_memory_loop                 | 7.33 GiB/s      | 2.64 GiB/s   |  7.78 GiB/s   |  8.44 GiB/s  | 
+| write_memory_rep_stosq            | 7.79 GiB/s      | 2.48 GiB/s   |  5.90 GiB/s   |  6.79 GiB/s  | 
+| write_memory_sse                  | 7.30 GiB/s      | 2.63 GiB/s   |  7.78 GiB/s   |  8.44 GiB/s  | 
+| write_memory_nontemporal_sse      | 6.70 GiB/s      | 3.39 GiB/s   |  5.10 GiB/s   |  5.54 GiB/s  | 
+| write_memory_avx                  |                 | 2.66 GiB/s   |  7.79 GiB/s   |  8.44 GiB/s  | 
+| write_memory_nontemporal_avx      |                 | 3.39 GiB/s   |  5.10 GiB/s   |  5.18 GiB/s  | 
+| write_memory_memset               | 6.65 GiB/s      | 3.38 GiB/s   |  5.09 GiB/s   |  5.57 GiB/s  | 
+| read_memory_rep_lodsq_omp         | 14.12 GiB/s     | 28.58 GiB/s  |  22.37 GiB/s  |  28.93 GiB/s |  
+| read_memory_loop_omp              | 15.63 GiB/s     | 30.29 GiB/s  |  22.38 GiB/s  |  28.46 GiB/s |  
+| read_memory_sse_omp               | 15.10 GiB/s     | 30.08 GiB/s  |  22.38 GiB/s  |  28.38 GiB/s |  
+| read_memory_avx_omp               |                 | 30.14 GiB/s  |  22.39 GiB/s  |  28.22 GiB/s |  
+| read_memory_prefetch_avx_omp      |                 | 30.37 GiB/s  |  22.40 GiB/s  |  28.07 GiB/s |  
+| write_memory_loop_omp             | 7.80 GiB/s      | 26.41 GiB/s  |  8.53 GiB/s   |  13.41 GiB/s |  
+| write_memory_rep_stosq_omp        | 12.32 GiB/s     | 23.69 GiB/s  |  10.08 GiB/s  |  18.91 GiB/s |  
+| write_memory_sse_omp              | 7.65 GiB/s      | 26.76 GiB/s  |  8.53 GiB/s   |  13.47 GiB/s |  
+| write_memory_nontemporal_sse_omp  | 13.10 GiB/s     | 33.16 GiB/s  |  11.04 GiB/s  |  25.30 GiB/s |  
+| write_memory_avx_omp              |                 | 26.67 GiB/s  |  8.60 GiB/s   |  14.08 GiB/s |  
+| write_memory_nontemporal_avx_omp  |                 | 32.99 GiB/s  |  11.17 GiB/s  |  20.65 GiB/s |  
+| write_memory_memset_omp           | 14.01 GiB/s     | 33.51 GiB/s  |  11.23 GiB/s  |  22.20 GiB/s |  
+{:.table .table-condensed}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
