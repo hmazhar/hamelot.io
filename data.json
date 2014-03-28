@@ -15,6 +15,22 @@
 
 	"videos": [
 	{
+		"title": "Humvee driving on soft soil/mud",
+		"image": "http://sbel.wisc.edu/People/hammad/images/projects/humvee_side.png",
+		"url": "http://vimeo.com/73258057",
+		"description": "Simulation of a 3500 kg Humvee driving on bed of mud",
+		"render": "PovRay",
+		"software": "Chrono::Engine"
+	},
+	{
+		"title": "Cohesive Foam Simulation",
+		"image": "http://sbel.wisc.edu/People/hammad/images/projects/foam.png",
+		"url": "http://vimeo.com/69526321",
+		"description": "Simulation of material composed of spheres, ellipsoids, cylinders and boxes with a high value of cohesion resulting in a stiff foam like material.",
+		"render": "PovRay",
+		"software": "Chrono::Engine"
+	},
+	{
 		"title": "Angle Of Repose",
 		"image": "http://sbel.wisc.edu/People/hammad/images/projects/aor_4200.png",
 		"url": "http://vimeo.com/78985996",
@@ -28,6 +44,14 @@
 		"url": "http://vimeo.com/76483140",
 		"description": "Simulation showing the layering process of a Selective Laser Sintering machine",
 		"render": "PovRay",
+		"software": "Chrono::Engine"
+	},
+	{
+		"title": "Walking in Snow",
+		"image": "http://sbel.wisc.edu/People/hammad/images/projects/shek_deep_499.png",
+		"url": "http://vimeo.com/56057987",
+		"description": "A cohesive particle based method used to simulate a legged character walking through snow",
+		"render": "Mitsuba",
 		"software": "Chrono::Engine"
 	}
 	]
