@@ -1,0 +1,20 @@
+{
+	"videos": [
+	{
+		"title": "Angle Of Repose",
+		"image": "http://sbel.wisc.edu/People/hammad/images/projects/aor_4200.png",
+		"url": "http://vimeo.com/78985996",
+		"description": "An experiment to measure the angle of repose for the polyamide 12 (PA 650) powder used in the SLS process. This measurement was used to determine the correct friction parameters and calibrate the numerical model.",
+		"render": "PovRay",
+		"software": "Chrono::Engine"
+	},
+	{
+		"title": "SLS Simulation",
+		"image": "http://sbel.wisc.edu/images/sls_roller_600k.png",
+		"url": "http://vimeo.com/76483140",
+		"description": "Simulation showing the layering process of a Selective Laser Sintering machine",
+		"render": "PovRay",
+		"software": "Chrono::Engine"
+	}
+	]
+}

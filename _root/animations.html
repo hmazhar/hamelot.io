@@ -1,0 +1,24 @@
+---
+title : Animations
+description: Animations and parameter descriptions
+---
+
+{{# data.videos }}
+<div class = "well">
+
+	<div class="row">
+		<div class="col-md-6">
+			<a href="{{ url }}"><img style="width: 100%" alt="{{ title }}" src="{{ image }}"/></a>
+		</div>
+		<div class="col-md-6" >
+			<h2> <a href="{{ url }}"> {{ title }} </a></h2>
+
+			<p> {{ description }} </p>
+
+			<span class="label label-default">{{ software }}</span> 
+			<span class="label label-default">{{ render }} </span> 
+
+		</div>
+	</div>
+</div>
+	{{/ data.videos }}
