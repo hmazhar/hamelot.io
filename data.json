@@ -1,4 +1,18 @@
 {
+
+	"title": "Hammad M",
+	"tagline": "Multibody Dynamics Research, Among Other Things",
+	"author": {
+		"twitter": "username",
+		"github": "hmazhar",
+		"feedburner": "feedname",
+		"name": "Hammad Mazhar",
+		"email": "hammad@hamelot.co.uk"
+	},
+
+	"navigation": ["about","publications","projects","animations","archive"],
+
+
 	"videos": [
 	{
 		"title": "Angle Of Repose",
