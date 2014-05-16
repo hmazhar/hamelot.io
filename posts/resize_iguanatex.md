@@ -90,7 +90,7 @@ The form is now resizeable!, however, unlike more modern frameworks like Qt, the
 <pre>
 Private Sub UserForm_Initialize()
     LoadSettings
-    'This is only to make sure that the form aligns everything, this way there isn't a slight jump when the user first resizes the window
+    'This is only to make sure that the form aligns everything, this way there is not a slight jump when the user first resizes the window
     TextBox1.Height = LatexForm.Height - CommandButton1.Height * 5
     TextBox1.Width = LatexForm.Width - 25
     
