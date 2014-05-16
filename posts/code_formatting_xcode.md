@@ -7,7 +7,7 @@ tags: [xcode, programming]
 ---
 
 
-If youve ever wanted automatic code formatting in xcode like that in eclipse, it is entirely possible with an automator workflow and [astyle](http://astyle.sourceforge.net/).
+If you've ever wanted automatic code formatting in xcode like that in eclipse, it is entirely possible with an automator workflow and [astyle](http://astyle.sourceforge.net/).
 
 first install astyle, if using macports:
 
