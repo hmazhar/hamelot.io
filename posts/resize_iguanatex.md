@@ -84,7 +84,7 @@ Public Sub MakeFormResizable()
 End Sub
 </pre>
 
-Cool, the form is resizeable, however unlike more modern frameworks like Qt, there is no concept of layouts, everything must be positioned manually. So while the window resizes, nothing inside of it does. The fix for this is to manually resize everything by modifying the 'LatexForm' file under the 'Forms' directory. Add/modify the following:
+The form is now resizeable!, however, unlike more modern frameworks like Qt, there is no concept of layouts, everything must be positioned manually. So while the window resizes, nothing inside of it does. The fix for this is to manually resize everything by modifying the 'LatexForm' file under the 'Forms' directory. Add/modify the following:
 
 
 <pre>
