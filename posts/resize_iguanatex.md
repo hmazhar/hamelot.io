@@ -31,11 +31,11 @@ The first modification was to the 'Macros' file under the 'Modules' folder. I fo
 
 
 <pre>
-'Written: August 02, 2010
-'Author:  Leith Ross
-'Summary: Makes the UserForm resizable by dragging one of the sides. Place a call
-'         to the macro MakeFormResizable in the UserForm's Activate event.
-'Source: http://www.mrexcel.com/forum/excel-questions/485489-resize-userform.html
+'Written: August 02, 2010'
+'Author:  Leith Ross'
+'Summary: Makes the UserForm resizable by dragging one of the sides. Place a call'
+'         to the macro MakeFormResizable in the UserForm's Activate event.''
+'Source: http://www.mrexcel.com/forum/excel-questions/485489-resize-userform.html'
 
  Private Declare Function SetLastError _
    Lib "kernel32.dll" _
@@ -69,16 +69,16 @@ Public Sub MakeFormResizable()
   
     hWnd = GetActiveWindow
   
-    'Get the basic window style
+    'Get the basic window style'
      lStyle = GetWindowLong(hWnd, GWL_STYLE) Or WS_THICKFRAME
      
-    'Set the basic window styles
+    'Set the basic window styles'
      RetVal = SetWindowLong(hWnd, GWL_STYLE, lStyle)
     
-    'Clear any previous API error codes
+    'Clear any previous API error codes'
      SetLastError 0
     
-    'Did the style change?
+    'Did the style change?''
      If RetVal = 0 Then MsgBox "Unable to make UserForm Resizable."
      
 End Sub
@@ -90,7 +90,7 @@ The form is now resizeable!, however, unlike more modern frameworks like Qt, the
 <pre>
 Private Sub UserForm_Initialize()
     LoadSettings
-    'This is only to make sure that the form aligns everything, this way there is not a slight jump when the user first resizes the window
+    'This is only to make sure that the form aligns everything, this way there is not a slight jump when the user first resizes the window'
     TextBox1.Height = LatexForm.Height - CommandButton1.Height * 5
     TextBox1.Width = LatexForm.Width - 25
     
@@ -110,18 +110,18 @@ Private Sub UserForm_Initialize()
 End Sub
 
 Private Sub UserForm_Activate()
-  'Execute macro to enable resizeability
+  'Execute macro to enable resizeability'
   MakeFormResizable
 End Sub
 
 Private Sub UserForm_Resize()
-    'Make sure that the size is not zero!
+    'Make sure that the size is not zero!'
     If LatexForm.Height - CommandButton1.Height * 5 > 0 Then
         TextBox1.Height = LatexForm.Height - CommandButton1.Height * 5
         TextBox1.Width = LatexForm.Width - 25
     End If
     
-    'Other elements are moved as needed
+    'Other elements are moved as needed'
     ButtonRun.Top = LatexForm.Height - ButtonRun.Height * 3
     ButtonCancel.Top = LatexForm.Height - ButtonCancel.Height * 3
     CommandButton1.Top = LatexForm.Height - CommandButton1.Height * 4
