@@ -1,6 +1,6 @@
 ---
 title: Complementarity Frictional Contact In GAMS
-date: '2014-5-15'
+date: '2014-5-19'
 description: Solving Complementarity Frictional Contact Models in GAMS
 categories: [programming]
 tags: [gams, programming, contact, constraint, optimization, math, physics]
@@ -10,6 +10,24 @@ tags: [gams, programming, contact, constraint, optimization, math, physics]
 The purpose of this post is to detail work done by [Dan Melanz](http://danielmelanz.com/) and I on the topic of solving frictional contact problems using the [General Algebraic Modeling System (GAMS)](http://www.gams.com/)
 
 The best way to describe GAMS is that it is a language and framework for writing mathematical programming and optimization problems. GAMS can solve many different classes of problems, in this post the Nonlinear Programming (NLP), Quadratically Constrained Program (QCP) and Extended Mathematical Program (EMP) problem types will be discussed. 
+
+##References
+
+These papers provide more details about the various formulations used in this post. 
+
+####Primal Model:
+
+V. Acary and F. Cadoux, “Applications of an Existence Result for the Coulomb Friction Problem,” Recent Advances in Contact Mechanics, pp. 45–66, 2013.
+
+V. Acary, F. Cadoux, C. Lemaréchal, and J. Malick, “A formulation of the linear discrete Coulomb friction problem via convex optimization,” Z. angew. Math. Mech., vol. 91, no. 2, pp. 155–175, Feb. 2011.
+
+F. Bertails-Descoubes, F. Cadoux, G. Daviet, and V. Acary, “A nonsmooth Newton solver for capturing exact Coulomb friction in fiber assemblies,” ACM Transactions on Graphics, vol. 30, no. 1, pp. 1–14, Jan. 2011.
+
+####Dual Model
+
+M. Anitescu and G. D. Hart, “A constraint-stabilized time-stepping approach for rigid multibody dynamics with joints, contact and friction,” Int. J. Numer. Meth. Engng., vol. 60, no. 14, pp. 2335–2371, Aug. 2004.
+
+A. Tasora and M. Anitescu, “A complementarity-based rolling friction model for rigid contacts,” Meccanica, vol. 48, no. 7, pp. 1643–1659, Sep. 2013.
 
 
 ##Equations of Motion (EOM)
@@ -61,7 +79,7 @@ i \in \cA({\bf q}(t),\delta)  &: 0 \le \hatGN{i} \; \perp \; \overbrace{\Phi_{i}
 
 #### Discretized Impulse-Velocity Form
 
-Here the equations are similar, but the lagrange multipliers become reaction impulses rather than forces. Also stabilization terms are added for both the contacts and the joints that correct for penetrations. 
+Here the equations are similar, but the lagrange multipliers become reaction impulses rather than forces. Also stabilization terms are added for both the contacts and the joints that correct for penetrations. The relaxation term can be thought of as a "tilting" function that makes the lagrange multipliers perpendicular to the friction cone. 
 <div>
  \begin{align}
 
@@ -412,5 +430,93 @@ delta_v(dofs) = v.l(dofs);
 execute_unload "soln.gdx", gamma delta_v obj iters time;
 </pre>
 
-This model is slightly different than the other two in that it uses an iterative scheme to update the relaxation term. I found that doing 10 iterations was usually enough to converge to a solution.
+This model is slightly different than the other two in that it uses an iterative scheme to update the relaxation term. We found that doing 10 iterations was usually enough to converge to a solution.
+
+##Solvers
+
+This table represents the ist of solvers that will be used for each model, the goal is to understand how they perform and if they provide different solutions
+
+
+| Solver  | Dual qcp | Dual nlp | Primal qcp | Primal nlp | EOM |
+|---------|----------|----------|------------|------------|-----|
+| Conopt  | YES      | YES      | YES        | YES        | NO  |
+| Cplexd  | YES      | NO       | YES        | NO         | NO  |
+| Gurobi  | YES      | NO       | YES        | NO         | NO  |
+| Ipopt   | YES      | YES      | YES        | YES        | NO  |
+| minos   | YES      | YES      | YES        | YES        | NO  |
+| knitro  | YES      | YES      | YES        | YES        | NO  |
+| lindo   | YES      | NO       | YES        | NO         | NO  |
+| pathnlp | NO       | YES      | NO         | YES        | NO  |
+| miles   | NO       | YES      | NO         | NO         | YES |
+| path    | NO       | YES      | NO         | NO         | YES |
+{:.table .table-condensed}
+
+## Models
+
+Here several models will be described and detals provided on the solutions provided by different solvers
+
+#### Box on an inclined plane
+
+Results for normal force and tangential friction force for an angle of 0 degrees. Mass of the block is 1.0 kg
+
+| Solver  | dual qcp    | dual nlp    | primal qcp  | primal nlp  | EOM emp     |
+|---------|-------------|-------------|-------------|-------------|-------------|
+| Conopt  | 9.81        | 9.81        | 9.81        | 9.81        | 0           |
+| Cplexd  | 9.699811889 | 0           | 9.81000067  | 0           | 0           |
+| Gurobi  | 10.00146358 | 0           | 9.812432398 | 0           | 0           |
+| Ipopt   | 9.81004453  | 9.81004453  | 9.810017486 | 9.810017486 | 0           |
+| minos   | 9.810051932 | 9.810051932 | 9.81        | 9.81        | 0           |
+| knitro  | 9.812031608 | 9.812031608 | 10.33712774 | 10.33712774 | 0           |
+| lindo   | 39.24048097 | 0           | 9.810070548 | 0           | 0           |
+| pathnlp | 0           | 9.809653585 | 0           | 9.80965966  | 0           |
+| miles   | 0           | 0           | 0           | 0           | 9.81        |
+| path    | 0           | 0           | 0           | 0           | 9.809913388 |
+{:.table .table-condensed}
+
+| Solver  | dual qcp  | dual nlp  | primal qcp | primal nlp | EOM emp |
+|---------|-----------|-----------|------------|------------|---------|
+| Conopt  | 0         | 0         | 1.63E-16   | 1.63E-16   | 0       |
+| Cplexd  | 9.15E-12  | 0         | 3.68E-20   | 0          | 0       |
+| Gurobi  | 4.82E-11  | 0         | -2.35E-16  | 0          | 0       |
+| Ipopt   | -2.03E-16 | -2.03E-16 | -6.94E-07  | -6.94E-07  | 0       |
+| minos   | 0         | 0         | 0          | 0          | 0       |
+| knitro  | -2.44E-16 | -2.44E-16 | -1.18E-17  | -1.18E-17  | 0       |
+| lindo   | 6.36E-14  | 0         | 1.21E-19   | 0          | 0       |
+| pathnlp | 0         | 0         | 0          | 0          | 0       |
+| miles   | 0         | 0         | 0          | 0          | 0       |
+| path    | 0         | 0         | 0          | 0          | 0       |
+{:.table .table-condensed}
+
+Results for normal force and tangential friction force for an angle of 25 degrees. Mass of the block is 1.0 kg
+
+| Solver  | dual qcp    | dual nlp    | primal qcp  | primal nlp  | EOM emp     |
+|---------|-------------|-------------|-------------|-------------|-------------|
+| Conopt  | 8.890880015 | 8.890880015 | 8.903193995 | 8.903193995 | 0           |
+| Cplexd  | 8.887833911 | 0           | 8.890880643 | 0           | 0           |
+| Gurobi  | 8.516675409 | 0           | 8.943110478 | 0           | 0           |
+| Ipopt   | 8.890897594 | 8.890897594 | 8.900874991 | 8.900874991 | 0           |
+| minos   | 8.890898214 | 8.890898214 | 8.891385779 | 8.891385779 | 0           |
+| knitro  | 8.890953799 | 8.890953799 | 9.988990071 | 9.988990071 | 0           |
+| lindo   | 35.56570555 | 0           | 8.891402252 | 0           | 0           |
+| pathnlp | 0           | 8.890879976 | 0           | 8.890982302 | 0           |
+| miles   | 0           | 0           | 0           | 0           | 8.890880015 |
+| path    | 0           | 0           | 0           | 0           | 8.890880079 |
+{:.table .table-condensed}
+
+
+| Solver  | dual qcp    | dual nlp    | primal qcp  | primal nlp  | EOM emp     |
+|---------|-------------|-------------|-------------|-------------|-------------|
+| Conopt  | 4.145881897 | 4.145881897 | 4.141172311 | 4.141172311 | 0           |
+| Cplexd  | 4.146100806 | 0           | 4.145881789 | 0           | 0           |
+| Gurobi  | 4.346501223 | 0           | 4.120027138 | 0           | 0           |
+| Ipopt   | 4.145873977 | 4.145873977 | 4.135891029 | 4.135891029 | 0           |
+| minos   | 4.146010481 | 4.146010481 | 4.145469386 | 4.145469386 | 0           |
+| knitro  | 4.145843537 | 4.145843537 | 3.742626642 | 3.742626642 | 0           |
+| lindo   | 16.5822553  | 0           | 4.145673861 | 0           | 0           |
+| pathnlp | 0           | 4.145881917 | 0           | 4.145831445 | 0           |
+| miles   | 0           | 0           | 0           | 0           | 4.145881897 |
+| path    | 0           | 0           | 0           | 0           | 4.145881833 |
+{:.table .table-condensed}
+
+####More Models to Come
 
