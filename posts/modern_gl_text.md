@@ -111,7 +111,7 @@ glUniform1i(texture_handle, 0);
 float sx = 1. / window_size.x;
 float sy = 1. / window_size.y;
 
-RenderString(buffer, 0, 0, sx, sy);
+RenderString("hello world", 0, 0, sx, sy);
 glBindTexture(GL_TEXTURE_2D, 0);
 glUseProgram(0);
 ~~~
