@@ -23,7 +23,7 @@ V. Acary, F. Cadoux, C. Lemaréchal, and J. Malick, “A formulation of the line
 
 F. Bertails-Descoubes, F. Cadoux, G. Daviet, and V. Acary, “A nonsmooth Newton solver for capturing exact Coulomb friction in fiber assemblies,” ACM Transactions on Graphics, vol. 30, no. 1, pp. 1–14, Jan. 2011.
 
-####Dual Model
+####Dual Model:
 
 M. Anitescu and G. D. Hart, “A constraint-stabilized time-stepping approach for rigid multibody dynamics with joints, contact and friction,” Int. J. Numer. Meth. Engng., vol. 60, no. 14, pp. 2335–2371, Aug. 2004.
 
@@ -518,5 +518,20 @@ Results for normal force and tangential friction force for an angle of 25 degree
 | path    | 0           | 0           | 0           | 0           | 4.145881833 |
 {:.table .table-condensed}
 
-####More Models to Come
+#### Timing Comparison
+In this test there is a stack of spheres in a  4x20x4 configuration in contact with a flat plate. There are a total of 800 contacts, all times are in seconds. The Lindo solver did not finish after running for more than 300 seconds. s
+
+| Solver  | dual qcp | dual nlp | primal qcp | primal nlp | EOM emp |
+|---------|----------|----------|------------|------------|---------|
+| Conopt  | 0.232    | 0.231    | 136.702    | 137.543    | 0       |
+| Cplexd  | 0        | 0        | 0.1        | 0          | 0       |
+| Gurobi  | 0.24     | 0        | 0.16       | 0          | 0       |
+| Ipopt   | 1.127    | 1.116    | 0.385      | 0.409      | 0       |
+| minos   | 1.726    | 1.718    | 0.031      | 0.034      | 0       |
+| knitro  | 72.836   | 73.141   | 0.024      | 0.026      | 0       |
+| lindo   | DNF      | 0        | 0.077      | 0          | 0       |
+| pathnlp | 0        | 0.049    | 0          | 0.021      | 0       |
+| miles   | 0        | 0        | 0          | 0          | 0.073   |
+| path    | 0        | 0        | 0          | 0          | 0.039   |
+
 
