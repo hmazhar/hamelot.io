@@ -3,7 +3,7 @@ layout : default
 ---
 
 {{# page.author?to_data }}
-  <strong>{{ name }}</strong>
+  <strong> {{ name }} </strong>
   <p>{{ bio }}</p>
 {{/ page.author?to_data }}
 
@@ -14,7 +14,7 @@ layout : default
 <div class="row-fluid post-full">
   <div class="span12">
     <div class="date">
-      <span>{{page.date}}</strong>
+      <strong>{{page.date}}</strong>
     </div>
     <div class="content">
       {{{ page.content }}}
