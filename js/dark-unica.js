@@ -5,7 +5,7 @@
 
 // Load the fonts
 Highcharts.createElement('link', {
-	href: 'http://fonts.googleapis.com/css?family=Unica+One',
+	href: 'http://fonts.googleapis.com/css?family=Droid+Sans+Mono',
 	rel: 'stylesheet',
 	type: 'text/css'
 }, null, document.getElementsByTagName('head')[0]);
