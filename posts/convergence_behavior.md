@@ -7,7 +7,7 @@ tags: [gams, programming, contact, constraint, optimization, math, physics]
 ---
 
 
-In this post I wanted to document the behavior of several different numerical methods along with a set of benchmark test problems. 
+In this post I wanted to document the behavior of several different numerical methods using a set of benchmark test problems. 
 
 ###Test Problems
 
