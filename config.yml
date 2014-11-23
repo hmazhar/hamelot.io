@@ -3,7 +3,7 @@
 
 # This helps parsers (and hosting platforms) determine which version is needed to compile your site.
 # If you compile your blog yourself, setting this won't matter, but it's a nice thing to keep updated.
-RuhohSpec: "2.1"
+RuhohSpec: "2.6"
 
 # Used for things like RSS that need the full URL to a given resource.
 # This DOES NOT affect any of your paths or links in any way.
