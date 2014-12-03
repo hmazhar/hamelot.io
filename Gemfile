@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+gem 'vimeo', '~> 1.5.4'
 gem 'ruhoh', "~> 2.6"
 gem 'kramdown'
 #gem 'psych', "~> 1.3"
