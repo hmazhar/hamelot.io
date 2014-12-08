@@ -1,0 +1,15 @@
+# Site settings
+title: Hammad M
+email: hammad@hamelot.co.uk
+description: Multibody Dynamics Research, Among Other Things
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "hamelot.co.uk" # the base hostname & protocol for your site
+author: hammad mazhar
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+permalink: /:categories/:title
+excerpt_separator: "\n\n\n"
+paginate: 5
+paginate_path: posts/page:num

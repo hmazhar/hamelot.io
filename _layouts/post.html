@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+<body>
+	{% include header.html %}
+	<div class="container-narrow">
+		<div class="content">
+			<div class="post">
+				<header class="post-header">
+					<h1 class="post-title">{{ page.title }}</h1>
+					<p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+				</header>
+				<article class="post-content">
+					{{ content }}
+				</article>
+			</div>
+		</div>
+		{% include footer.html %}
+	</div>
+</body>
+</html>
