@@ -13,9 +13,9 @@ I work on lots of projects and write small pieces of code for personal use. Here
 <div class="well" >
 <div class="row">
 <div class="col-md-3">
-<img style="width: 100%" alt="" src="http://sbel.wisc.edu/images/sls_roller_600k.png"/>
-<img style="width: 100%" alt="" src="http://sbel.wisc.edu/People/hammad/images/projects/SLS_top_view_mixed_after_rolling.png"/>
-<img style="width: 100%" alt="" src="http://sbel.wisc.edu/People/hammad/images/projects/aor_4200.png"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/sls_roller_600k.png"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/SLS_top_view_mixed_after_rolling.png"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/aor_4200.png"/>
 </div>
 <div class="col-md-9" markdown ="block">
 
@@ -41,8 +41,8 @@ Prof. Tim Osswald, Prof. Dan Negrut
 <div class="well" >
 <div class="row">
 <div class="col-md-3">
-<img style="width: 100%" alt="" src="http://sbel.wisc.edu/People/hammad/images/projects/shek_walking_100.png"/>
-<img style="width: 100%" alt="" src="http://sbel.wisc.edu/People/hammad/images/projects/shek_deep_499.png"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/shek_walking_100.png"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/shek_deep_499.png"/>
 </div>
 <div class="col-md-9" markdown ="block">
 
