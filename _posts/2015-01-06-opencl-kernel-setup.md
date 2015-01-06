@@ -1,7 +1,7 @@
 ---
 layout: post
 title: OpenCL Kernel Setup
-date: '2014-2-27'
+date: '2015-01-06'
 description: A simple guide on how to set up OpenCL
 categories: [programming]
 tags: [opencl, c++, programming]
