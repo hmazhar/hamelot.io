@@ -146,7 +146,7 @@ Use full path in buildbot command
  - Install Xcode
  - Install command line tools for xcode
  - Install homebrew
- - Install [xquatz](xquartz.macosforge.org)
+ - Install [xquatz](http://xquartz.macosforge.org)
  - Install packages for compiling on OSX
 
 {% highlight bash %}
