@@ -2,12 +2,12 @@
 layout: post
 title: ModernGL Camera
 date: '2013-12-16'
-description: A modern opengl quaternion camera class
+description: A modern opengl quaternion camera class using glm
 categories: [visualization]
 tags: [glm, modernGL, camera, c++, glut, quaternion]
 ---
 
-This is an update to my previous opengl Camera class. It uses GLM for all math operations and is better suited for use with modern opengl code based on shaders and such.
+This is an update to my previous [OpenGL camera class](http://hamelot.co.uk/visualization/opengl-camera/). It uses GLM for all math operations and is better suited for use with modern opengl code based on shaders and such.
 
 Code is also availible here:
 

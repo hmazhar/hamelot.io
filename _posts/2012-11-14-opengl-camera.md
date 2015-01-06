@@ -7,6 +7,8 @@ categories: [visualization]
 tags: [opengl, camera, c++, glut, quaternion]
 ---
 
+#####UPDATE: For a modern opengl version using GLM please see this [newer post](http://hamelot.co.uk/visualization/moderngl-camera/)
+
 #####UPDATE: Some definitions were mission from code, quaternion and vector classes now included with code
 
 When i'm writing a dynamics code I usually need to visually debug my simulations to make sure everything is initialized properly, looks correct, etc. 
