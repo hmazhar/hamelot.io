@@ -3,7 +3,8 @@ title: Hammad M
 email: hammad@hamelot.co.uk
 description: Multibody Dynamics Research, Among Other Things
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "hamelot.co.uk" # the base hostname & protocol for your site
+url: "http://hamelot.co.uk" # the base hostname & protocol for your site
+feed_url: "http://hamelot.co.uk/feed.xml"
 author: hammad mazhar
 
 # Build settings
