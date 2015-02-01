@@ -9,7 +9,10 @@ tags: [compiling, programming, cmake]
 
 Ever since I started using [CMake](www.cmake.org/) to handle generating my build files I have relied on Makefiles. Most linux distributions come with the make command so getting up and running doesn't require too much effort. Make and its derivatives been around for almost 40 years and it's an extremely powerful tool that can do many things beyond simply compiling code. There are cases where the flexibility and power of make are overkill in terms of compiling code and if you are willing to trade them with improved performance [Ninja](http://martine.github.io/ninja/) might be what you are looking for. 
 
-[Ninja](http://martine.github.io/ninja/), written by [Evan Martin](http://neugierig.org/) is a build system that is focused on performance. It was designed for fast incremental builds and large projects in general.
+[Ninja](http://martine.github.io/ninja/), written by [Evan Martin](http://neugierig.org/) is a build system that is focused on performance. It was designed for fast incremental builds and large projects in general. To quote the [chromium project](https://code.google.com/p/chromium/wiki/NinjaBuild) "Ninja is a build system written with the specific goal of improving the edit-compile cycle time".
+
+Ninja does not output information about the current progress of the build on more than one line. Warnings and Errors are output like normal. Make on the other hand will output a line for every single cpp file that was compiled and linked. So beyond the performance improvements Ninja has a higher signal to noise ratio than Make. 
+
 
 I wanted to measure the performance of Make and Ninja for several projects, namely [chrono](https://github.com/projectchrono/chrono) and  [ogre](http://www.ogre3d.org/).
 
@@ -25,7 +28,7 @@ cmake -G Ninja
 
 ###Commands used for timing
 
-Timing was performed using the linux "time" command and all builds were done in memory and all output was redirected to /dev/null.
+Timing was performed using the linux "time" command and all builds were done in memory and all output was redirected to /dev/null. Redirecting to dev null was performed so that only the timing output would be written to standard out. In practice > /dev/null 2>&1 should not be used.
 
 {% highlight bash %}
 for i in {1..8}; do make clean && time make -j $i > /dev/null 2>&1; done
