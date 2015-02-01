@@ -8,7 +8,7 @@ permalink: /projects/
 # Projects
 
 
-I work on lots of projects and write small pieces of code for personal use. Here is a partial list of projects.
+I work on lots of projects and write small pieces of code for personal use. Here is a partial list of them.
 
 {::options parse_block_html="true" /}
 

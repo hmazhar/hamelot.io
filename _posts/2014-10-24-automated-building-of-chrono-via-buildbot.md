@@ -143,11 +143,11 @@ Use full path in buildbot command
 
 ###OSX
 
- - Install Xcode
+ - Install Xcode (from the app store)
  - Install command line tools for xcode
- - Install homebrew
+ - Install [homebrew](http://brew.sh/)
  - Install [xquatz](http://xquartz.macosforge.org)
- - Install packages for compiling on OSX
+ - Install the following packages for compiling on OSX
 
 {% highlight bash %}
 brew install cmake glew homebrew/versions/glfw3 glm freeglut wget subversion gcc49 irrlicht boost
