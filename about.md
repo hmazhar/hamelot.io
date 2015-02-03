@@ -5,108 +5,101 @@ description:
 permalink: /about/
 ---
 
-
-
-
-<div class="well" >
-	<div class="row">
-		<div class="col-md-3">
-			<img src="/assets/media/images/hammad.png" alt="Hammad Mazhar" class="img-rounded" width = "200px" >
-		</div>
-		<div class="col-md-4">
-			<h4>&nbsp;</h4>
-			<p>I am a Graduate Student in the Mechanical Engineering Department at the University of Wisconsin Madison. I currently work at the </p> <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a>
-		</div>
-		<div class="col-md-4">
-			<h4>&nbsp;</h4>
-			<address>
-				<strong>Hammad Mazhar</strong><br>
-				Department of Mechanical Engineering<br>
-				The University of Wisconsin Madison<br>
-				<br>
-
-				<abbr title="Email"><span class="label label-important">Email:</span></abbr> hammad@hamelot.co.uk
-			</address>
+<div class="row">
+	<div class="col-md-4 column">
+		<img src="/assets/media/images/hammad.png" alt="Hammad Mazhar" class="img-rounded" width = "200px" >
+	</div>
+	<div class="col-md-8 column">
+		<div class="row clearfix">
+			<div class="col-md-7 column">
+			<p>I am a Graduate Student in the Mechanical Engineering Department at the UW Madison. I currently work as a research assistant at the <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a> under Professor Dan Negrut. I work on topics related to parallel computing on CPUs/GPUs, multibody dynamics programming, benchmarking, build testing,graphics and rendering, and web design.</p>
+			</div>
+			<div class="col-md-5 column"> 
+			<address> <strong>Hammad Mazhar</strong><br /> Department of Mechanical Engineering<br /> University of Wisconsin Madison<br /> <abbr title="Email"></abbr> hammad (at) hamelot.co.uk</address>
+			</div>
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-md-4 column">
+		<h2 class="text-muted"> EDUCATION</h2>
+		<h3> University of Wisconsin Madison</h3>
+		<h4 class="text-primary">PhD in Mechanical Engineering</h4>
+		<p> Advisor: Professor Dan Negrut </p>
+		<h4 class="text-primary">MS in Mechanical Engineering</h4>
+		<p> December 2012 </p>
+		<p> Advisor: Professor Dan Negrut </p>
+		<h4 class="text-primary">BS in Mechanical Engineering</h4>
+		<p> December 2010 </p>
 
-##Experience
+		<h2 class="text-muted"> LINKS</h2>
+		<p> <a href="https://github.com/hmazhar" rel="me"><i class="icon-github-squared"></i></a>
+        <a href="https://www.linkedin.com/in/hammadmazhar/" rel="me"><i class="icon-linkedout-squared"></i></a>
+        <a href="https://plus.google.com/117672433856025584680?rel=author" rel="me"> <i class="icon-plus-squared"></i></a>
+        <a href="https://vimeo.com/hammadmazhar/videos/appears/" rel="me"> <i class="icon-video-squared"></i></a></p>
 
-###Simulation  Based Engineering Lab, UW-Madison
+		<h2 class="text-muted"> SKILLS</h2>
+		<h3> Programming</h3>
+		<h4 class="text-primary"> Parallel Frameworks</h4>
+		<p> CUDA, OpenMP, OpenCL </p>
+		<h4 class="text-primary"> Languages</h4>
+		<p> Experienced: C, C++ </p>
+		<p> Proficient: Matlab, Python, Latex, Java </p>
+		<p> Familiar: Assembly, PHP, CSS, Ruby </p>
 
-####Undergraduate  Research Assistant (2008, May. – 2010, Dec.)
-
-* Massively  parallel collision detection
-* Parallel  programming on graphics hardware
-* Multi-body  simulations on graphics hardware
-* Setup  and Management of 21 Tera-Flop GPU Cluster
-* Managing  and Assembling Computer Hardware
-* Managing  Laboratory Assets
-
-###NVIDIA Corporation
-
-####Summer Intern 2010
-
-* Optimizing  parallel convex-convex GPU code using CUDA
-* Achieved  3x speedup after optimization
-* Performed  assembly level GPU optimization
-* Code  rewritten to take full advantage of NVIDIA GPU hardware
-* Fixed  numerous bugs and used several profiling tools to gauge code performance
-
-
-###Simulation  Based Engineering Lab, UW-Madison
-
-####Graduate  Research Assistant (2011, Jan. – Present)
-
-* Parallel Convex-Convex Collision Detection
-* Cuda optimization of parallel physics engine
-* Modeling of granular material in Low G environments
-* Currently working on Doctorate Degree
+		<h3> Tools</h3>
+		<p> Maple, Solidworks, Blender, 3DS Max, Maya, PovRay, Photoshop, CMake </p>
+		<h4 class="text-primary"> Versioning Systems</h4>
+		<p> Git, Mercurial, Subversion </p>
 
 
-###NASA Jet Propulsion Laboratory [JPL]
+	</div>
+	<div class="col-md-8 column">
+		<h2 class="text-muted"> EXPERIENCE</h2>
+		<h3> Walt Disney Animation Studios</h3>
+		<h4 class="text-primary">Software Engineering Intern | Summer 2012 | Burbank, CA</h4>
+		<ul>
+			<li>Implemented particle and constraint based simulation code</li>
+			<li>Simulated fracturing of loose and densely packed material</li>
+			<li>Investigated methods to accelerate solver convergence</li>
+			<li>Codebase parallelized via OpenMP and CUDA</li>
+			<li>Studied and Implemented Material Point Method in 2D</li>
+		</ul>
+		<h3> NASA - Jet Propulsion Laboratory (JPL)</h3>
+		<h4 class="text-primary">Software Engineering Intern | Summer 2011 | Pasadena, CA</h4>
+		<ul>
+			<li>Improved performance of GPU convex-convex collision algorithm</li>
+			<li>Studied anchoring in a low gravity environment</li>
+			<li>Modeling of anchor penetrating granular media</li>
+			<li>Validation of GPU physics engine with literature</li>
+			<li>Studied settling characteristics of granular media</li>
+		</ul>
+		<h3> NVIDIA Corporation</h3>
+		<h4 class="text-primary">Software Engineering Intern | Summer 2010 | St Louis, MO</h4>
+		<ul>
+			<li>Optimizing parallel convex-convex GPU code using CUDA</li>
+			<li>Achieved 3x speedup after optimization </li>
+			<li>Performed assembly level GPU optimization</li>
+			<li>Code rewritten to take full advantage of NVIDIA GPU hardware</li>
+			<li>Fixed numerous bugs and used several profiling tools to gauge code performance</li>
+		</ul>
+		<h2 class="text-muted"> RESEARCH</h2>
+		<h3> Simulation Based Engineering Lab</h3>
+		<h4 class="text-success">University of Wisconsin Madison | http://sbel.wisc.edu</h4>
+		<h4 class="text-primary">May 2010 – Present | Graduate Research Assistant</h4>
+		<h4 class="text-primary">May 2008 – 2010 | Undergraduate Research Assistant</h4>
+		<ul>
+			<li>Lead developer of Chrono::Parallel, a parallel dynamics engine for simulating large granular and fluid dynamics problems</li>
+			<li>Massively parallel collision detection engine using CUDA and OpenMP</li>
+			<li>Modern OpenGL visualization engine</li>
+			<li>Setup and manage lab's GPU cluster </li>
+		</ul>
+		<h2 class="text-muted"> OUTREACH</h2>
+		<h3> Promoting the Computational Science Initiative (ProCSI)</h3>
+		<h4 class="text-success">University of Wisconsin Madison | http://outreach.sbel.wisc.edu/</h4>
+		<h4 class="text-primary">Summer 2008 - 2014</h4>
+		<p>Developed racing game using OGRE and Bullet to demonstrate game development to students</p>
 
-####Summer Intern 2011
 
-* Modeling of anchor on a Near Earth Object (NEO)
-* Setup validation experiments to test parallel dynamics engine
-* Augmented collision detection algorithm to support additional shapes
-* Studied settling behavior of granular material
-* Parametric study of settling time for simulation engine
-
-###Walt Disney Animation Studios, Burbank, CA
-
-####Software Engineer (Summer 2012)
-
-* Implemented particle and constraint based simulation code
-* Simulated fracturing of loose and densely packed material
-* Investigated methods to accelerate solver convergence
-* Codebase parallelized via OpenMP and CUDA
-* Studied and Implemented Material Point Method in 2D
-
-
-##Skills
-
-###Languages/APIs: 
-
-* Proficient programming in C,C++
-* Experience with Python, Java, Matlab
-* Experience with OpenGL, OGRE for visualization and game development
-* Developer for Chrono::Engine, working on GPU implementation http://www.chronoengine.info/chronoengine/
-* Several years of experience using Compute Unified Device Architecture (CUDA) API and OpenMP for parallel programming 
-
-###Systems:
-
-* Several years of experience with Linux/UNIX
-* Setup cluster based on Windows Server 2008 R2 HPC
-
-###Tools:
-
-* Solidworks, Unigraphics, 3DS Max, Maya, PovRay, Photoshop
-* Matlab 2012, Maple 16, EES
-* Visual Studio, Eclipse
-
-###Outreach
-
-* Promoting the Computational Science Initiative (ProCSI), 2008-2010
+	</div>
+</div>
