@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Reading a Matlab Matrix in c++
-date: '2015-02-31'
+date: '2015-02-16'
 description: How to read a matlab COO matrix in C++ quickly
 categories: programming
 tags: [programming, c++, matlab]
