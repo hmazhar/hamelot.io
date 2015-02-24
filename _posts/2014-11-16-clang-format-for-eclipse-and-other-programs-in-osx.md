@@ -11,18 +11,18 @@ tags: [programming, c++, eclipse, osx]
 
 Currently there is support for integration with:
 
-  - [Vim](http://www.vim.org/): https://github.com/rhysd/vim-clang-format
-  - [Emacs](http://www.gnu.org/software/emacs/): http://clang.llvm.org/docs/ClangFormat.html
-  - [BBEdit](http://www.barebones.com/products/bbedit/): http://clang.llvm.org/docs/ClangFormat.html
-  - [Visual studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx): http://clang.llvm.org/docs/ClangFormat.html
+  - Vim: [https://github.com/rhysd/vim-clang-format](https://github.com/rhysd/vim-clang-format)
+  - Emacs: [http://clang.llvm.org/docs/ClangFormat.html](http://clang.llvm.org/docs/ClangFormat.html)
+  - BBEdit: [http://clang.llvm.org/docs/ClangFormat.html](http://clang.llvm.org/docs/ClangFormat.html)
+  - Visual studio: [http://clang.llvm.org/docs/ClangFormat.html](http://clang.llvm.org/docs/ClangFormat.html)
 
 ###UPDATE 2015-2-24
 
 As of 2015-2-24 the following editors are supported
 
- - [Eclipse](https://eclipse.org/): https://github.com/wangzw/cppstyle
- - [Sublime Text](http://www.sublimetext.com/): https://github.com/rosshemsley/SublimeClangFormat
- - [XCode](https://developer.apple.com/xcode/): https://github.com/travisjeffery/ClangFormat-Xcode
+ - Eclipse: [https://github.com/wangzw/cppstyle](https://github.com/wangzw/cppstyle)
+ - Sublime Text: [https://github.com/rosshemsley/SublimeClangFormat](https://github.com/rosshemsley/SublimeClangFormat)
+ - XCode: [https://github.com/travisjeffery/ClangFormat-Xcode](https://github.com/travisjeffery/ClangFormat-Xcode)
 
 Using the automator service method described below is only necessary if you would like to be able to use clang-format for any program using a system wide keyboard shortcut.
 
