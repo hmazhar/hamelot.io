@@ -7,7 +7,26 @@ categories: programming
 tags: [programming, c++, eclipse, osx]
 ---
 
-[clang-format](http://clang.llvm.org/docs/ClangFormat.html) is a program similar to [astyle](http://astyle.sourceforge.net/) that cleans up and formats C++ code. Currently there is support for integration with [Vim](http://www.vim.org/), [Emacs](http://www.gnu.org/software/emacs/), [BBEdit](http://www.barebones.com/products/bbedit/) and [Visual studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx). 
+[clang-format](http://clang.llvm.org/docs/ClangFormat.html) is a program similar to [astyle](http://astyle.sourceforge.net/) that cleans up and formats C++ code. 
+
+Currently there is support for integration with:
+
+  - [Vim](http://www.vim.org/): https://github.com/rhysd/vim-clang-format
+  - [Emacs](http://www.gnu.org/software/emacs/): http://clang.llvm.org/docs/ClangFormat.html
+  - [BBEdit](http://www.barebones.com/products/bbedit/): http://clang.llvm.org/docs/ClangFormat.html
+  - [Visual studio](http://msdn.microsoft.com/en-us/vstudio/aa718325.aspx): http://clang.llvm.org/docs/ClangFormat.html
+
+###UPDATE 2015-2-24
+
+As of 2015-2-24 the following editors are supported
+
+ - [Eclipse](https://eclipse.org/): https://github.com/wangzw/cppstyle
+ - [Sublime Text](http://www.sublimetext.com/): https://github.com/rosshemsley/SublimeClangFormat
+ - [XCode](https://developer.apple.com/xcode/): https://github.com/travisjeffery/ClangFormat-Xcode
+
+Using the automator service method described below is only necessary if you would like to be able to use clang-format for any program using a system wide keyboard shortcut.
+
+##Installation
 
 On OSX clang is one of the default compilers supported but the version of clang on OSX does not come with clang-format. There are two options for installing:
 
@@ -15,10 +34,14 @@ On OSX clang is one of the default compilers supported but the version of clang 
 
 See related homebrew pull request [here](https://github.com/Homebrew/homebrew/pull/27039)
 
+Note that as of 2014-12-03 clang-format is part the main homebrew repository, see [here](https://github.com/Homebrew/homebrew/commits/master/Library/Formula/clang-format.rb).
+
 {% highlight c++ %}
-brew tap tcr/tcr
+//Tap not needed as of 2014-12-03
+//brew tap tcr/tcr
 brew install clang-format
 {% endhighlight %} 
+
 ###Manual Installation:
 
 With this option you can copy clang-format to your /usr/local/bin directory (or a location located in your path)
@@ -28,8 +51,7 @@ Download clang binaries [link](http://llvm.org/releases/download.html)
 Extract and copy clang-format
 
 
-
-###Automator service:
+###Automator service (Optional):
 
 Then open up automator and create a new service. The default should be "Service recieves selected (text) in (any application)" with "Output replaces selected text" unchecked.
 
