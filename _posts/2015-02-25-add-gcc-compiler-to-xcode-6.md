@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Add GCC compiler to XCode 6
+title: Add GCC compiler to Xcode 6
 date: '2015-02-25'
-description: How to add GCC as a new compiler in XCode 6
+description: How to add GCC as a new compiler in Xcode 6
 categories: programming
 tags: [programming, xcode, gcc]
 ---
 
-A few years ago I wrote a [guide](/programming/add-custom-compiler-to-xcode/) on how to add a newer version of GCC to XCode. At the time OSX/XCode came with a version of GCC 4.2 that could be modified to run as a different version of GCC. The problem with newer versions of XCode is that the GCC compiler was removed making it more difficult to add a custom compiler. 
+A few years ago I wrote a [guide](/programming/add-custom-compiler-to-xcode/) on how to add a newer version of GCC to Xcode. At the time OSX/Xcode came with a version of GCC 4.2 that could be modified to run as a different version of GCC. The problem with newer versions of Xcode is that the GCC compiler was removed making it more difficult to add a custom compiler. 
 
-The plugin is based on an [older xcode-gcc plugin](https://code.google.com/p/xcode-gcc-plugin/) which hasn't been updated for XCode 6 and a [post on stackoverflow](http://stackoverflow.com/questions/19061966/how-to-use-a-recent-gcc-with-xcode-5). The modifications themselves are pretty simple and as long as the plugin structure doesn't change with future versions of XCode, they should work with with newer versions of GCC. You can see the modifications in the [revision history](https://github.com/hmazhar/xcode-gcc/commits/master).
+The plugin is based on an [older xcode-gcc plugin](https://code.google.com/p/xcode-gcc-plugin/) which hasn't been updated for Xcode 6 and a [post on stackoverflow](http://stackoverflow.com/questions/19061966/how-to-use-a-recent-gcc-with-xcode-5). The modifications themselves are pretty simple and as long as the plugin structure doesn't change with future versions of Xcode, they should work with with newer versions of GCC. You can see the modifications in the [revision history](https://github.com/hmazhar/xcode-gcc/commits/master).
 
 
 ###Installing GCC
@@ -39,7 +39,7 @@ The plugin is available at the following repository
 
 ### Installation
 
-Note: close XCode before doing this
+Note: close Xcode before doing this
 
 Cope the .xcplugin file to 
 
