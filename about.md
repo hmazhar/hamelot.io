@@ -6,10 +6,10 @@ permalink: /about/
 ---
 
 <div class="row">
-	<div class="col-md-4 column">
+	<!-- <div class="col-md-4 column">
 		<img src="/assets/media/images/hammad.png" alt="Hammad Mazhar" class="img-rounded" width = "200px" >
-	</div>
-	<div class="col-md-8 column">
+	</div> -->
+	<!-- <div class="col-md-8 column"> -->
 		<div class="row clearfix">
 			<div class="col-md-7 column">
 			<p>I am a Graduate Student in the Mechanical Engineering Department at the UW Madison. I currently work as a research assistant at the <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a> under Professor Dan Negrut. I work on topics related to parallel computing on CPUs/GPUs, multibody dynamics programming, benchmarking, build testing,graphics and rendering, and web design.</p>
@@ -18,7 +18,7 @@ permalink: /about/
 			<address> <strong>Hammad Mazhar</strong><br /> Department of Mechanical Engineering<br /> University of Wisconsin Madison<br /> <abbr title="Email"></abbr> hammad (at) hamelot.co.uk</address>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </div>
 <div class="row">
 	<div class="col-md-4 column">
