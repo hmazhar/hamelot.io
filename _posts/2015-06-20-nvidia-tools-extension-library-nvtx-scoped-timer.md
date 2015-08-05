@@ -40,13 +40,13 @@ struct NVTXTimer
 {% highlight c++ %}
 
 int main(){
-    NVTXTimer scope("fullTimer");
+    NVTXTimer scoped_timer_a("fullTimer");
     {
-        NVTXTimer scope("SubTimer1");
+        NVTXTimer scoped_timer_b("SubTimer1");
         //Do Stuff
     }
     {
-        NVTXTimer scope("SubTimer2");
+        NVTXTimer scoped_timer_c("SubTimer2");
         //Do Other Stuff
     }
     return 0
