@@ -12,7 +12,7 @@ permalink: /about/
 	<!-- <div class="col-md-8 column"> -->
 		<div class="row clearfix">
 			<div class="col-md-7 column">
-			<p>I am a Graduate Student in the Mechanical Engineering Department at the UW Madison. I currently work as a research assistant at the <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a> under Professor Dan Negrut. I work on topics related to parallel computing on CPUs/GPUs, multibody dynamics programming, benchmarking, build testing,graphics and rendering, and web design.</p>
+			<p>I am a Graduate Student in the Mechanical Engineering Department at the UW Madison. I currently work as a research assistant at the <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a> under Professor Dan Negrut. I work on topics related to parallel computing on CPUs/GPUs, multibody dynamics programming, benchmarking, build testing, graphics and rendering, and web design.</p>
 			</div>
 			<div class="col-md-5 column"> 
 			<address> <strong>Hammad Mazhar</strong><br /> Department of Mechanical Engineering<br /> University of Wisconsin Madison<br /> <abbr title="Email"></abbr> hammad (at) hamelot.co.uk</address>
@@ -41,21 +41,29 @@ permalink: /about/
 		<h2 class="text-muted"> SKILLS</h2>
 		<h3> Programming</h3>
 		<h4 class="text-primary"> Parallel Frameworks</h4>
-		<p> CUDA, OpenMP, OpenCL </p>
+		<p> CUDA, OpenMP, OpenCL, DirectX Compute </p>
 		<h4 class="text-primary"> Languages</h4>
 		<p> Experienced: C, C++ </p>
-		<p> Proficient: Matlab, Python, Latex, Java </p>
-		<p> Familiar: Assembly, PHP, CSS, Ruby </p>
+		<p> Proficient: Matlab, Python, Latex, JavaScript </p>
+		<p> Familiar: Assembly, PHP, CSS, Ruby, Java </p>
 
 		<h3> Tools</h3>
-		<p> Maple, Solidworks, Blender, 3DS Max, Maya, PovRay, Photoshop, CMake </p>
+		<p> Maple, Solidworks, Blender, 3DS Max, Maya, PovRay, Mitsuba, Photoshop, CMake </p>
 		<h4 class="text-primary"> Versioning Systems</h4>
-		<p> Git, Mercurial, Subversion </p>
-
+		<p> Git, Mercurial, Perforce, Subversion </p>
 
 	</div>
 	<div class="col-md-8 column">
 		<h2 class="text-muted"> EXPERIENCE</h2>
+		<h3> NVIDIA Corporation</h3>
+		<h4 class="text-primary">Software Engineering Intern | Summer 2015 | Santa Clara, CA</h4>
+		<ul>
+			<li>Wrote and optimized Compute Shaders</li>
+			<li>Worked on physics integration into an Unreal Engine 3 title</li>
+			<li>Worked with NVIDIA FleX, a Position Based Dynamics (PBD) code</li>
+			<li>Analyzed low level performance for GPU workloads</li>
+			<li>Improved tools used by GPU architecture group for profiling GPU code</li>
+		</ul>
 		<h3> Walt Disney Animation Studios</h3>
 		<h4 class="text-primary">Software Engineering Intern | Summer 2012 | Burbank, CA</h4>
 		<ul>
