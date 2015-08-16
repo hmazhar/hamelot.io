@@ -18,17 +18,17 @@ The plugin is based on an [older xcode-gcc plugin](https://code.google.com/p/xco
 brew install gcc
 {% endhighlight %}
 
-As of 2015-02-25 GCC 4.9 is the latest version and will get installed to:
+As of 2015-08-15 GCC 5.2 is the latest version and will get installed to:
 
 {% highlight bash %}
-/usr/local/bin/gcc-4.9
+/usr/local/bin/gcc-5
 {% endhighlight %}
 
 ####If a version of GCC other than the latest is required 
 
 {% highlight bash %}
 brew tap homebrew/versions
-brew install gcc49
+brew install gcc5
 {% endhighlight %}
 
 ### Plugin Download
@@ -41,7 +41,7 @@ The plugin is available at the following repository
 
 Note: close Xcode before doing this
 
-Cope the .xcplugin file to 
+Copy the GCC 5.2.xcplugin file to 
 
 {% highlight bash %}
 /Applications/Xcode.app/Contents/Plugins/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins/
@@ -50,7 +50,7 @@ Cope the .xcplugin file to
 
 ###Modifying the plugin
 
-If you would like to change the defaults for the GCC flags modify the "GCC 4.9.xcspec" file and change the "DefaultValue" parameter of the option to either "YES" or "NO". This could be useful if you want set system wide compiler settings. Variables can also be used:
+If you would like to change the defaults for the GCC flags modify the "GCC 5.2.xcspec" file and change the "DefaultValue" parameter of the option to either "YES" or "NO". This could be useful if you want set system wide compiler settings. Variables can also be used:
 
 {% highlight bash %}
 {
@@ -67,13 +67,13 @@ If you would like to change the defaults for the GCC flags modify the "GCC 4.9.x
 },
 {% endhighlight %}
 
-Modifying for different versions is also easy, simply replace any instances of 4.9 with your new version and change the ExecPath variable to point to the new location of GCC. It should be possible to have multiple plugins with different GCC versions but I have not tested this. 
+Modifying for different versions is also easy, simply replace any instances of 5.2 with your new version and change the ExecPath variable to point to the new location of GCC. It should be possible to have multiple plugins with different GCC versions but I have not tested this. 
 
 {% highlight bash %}
-ExecPath = "/usr/local/bin/gcc-4.9";
+ExecPath = "/usr/local/bin/gcc-5";
 {% endhighlight %}
 
-#### Modifications made for GCC 4.9
+#### Modifications made for GCC 5
 The GCC 4.5 plugin [here](https://code.google.com/p/xcode-gcc-plugin/) has support for most of the optimizations options available. I added AVX and AVX2 for those that need it. 
 
 Shoot me an email or [submit a pull request](https://github.com/hmazhar/xcode-gcc.git) for any options that aren't available. 
