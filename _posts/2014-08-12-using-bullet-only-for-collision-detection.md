@@ -38,10 +38,10 @@ btCollisionObject* sphere_B = new btCollisionObject();
 sphere_A->getWorldTransform().setOrigin(btVector3((btScalar) 2, (btScalar) 1.5, (btScalar) 0));
 sphere_B->getWorldTransform().setOrigin(btVector3((btScalar) 2, (btScalar) 0, (btScalar) 0));
 //Create a sphere with a radius of 1
-btSphereShape sphere_shape(1);
+btSphereShape * sphere_shape = new btSphereShape(1);
 //Set the shape of each collision object
-sphere_A->setCollisionShape(&sphere_shape);
-sphere_B->setCollisionShape(&sphere_shape);
+sphere_A->setCollisionShape(sphere_shape);
+sphere_B->setCollisionShape(sphere_shape);
 //Add the collision objects to our collision world
 bt_collision_world->addCollisionObject(sphere_A);
 bt_collision_world->addCollisionObject(sphere_B);
