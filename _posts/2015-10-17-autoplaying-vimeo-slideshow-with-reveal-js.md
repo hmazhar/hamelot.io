@@ -11,7 +11,7 @@ In the lab we've sometimes had to show videos at open-house like events for the 
 
 For completeness a working example is [here](https://github.com/hmazhar/vimeo_slideshow)
 
-Beyond the Reveal.js and Froogaloop documentations [this](http://labs.funkhausdesign.com/examples/vimeo/froogaloop2-api-basics.html) page has a useful example that I found useful. 
+Beyond the Reveal.js and Froogaloop documentations [this](http://labs.funkhausdesign.com/examples/vimeo/froogaloop2-api-basics.html) page has a useful example. 
 
 ###Specifications:
 * Start when user hits the right/left arrow or the play button is clicked on the first video
