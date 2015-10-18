@@ -7,10 +7,11 @@ categories: other
 tags: [javascript]
 ---
 
-In the lab we've sometimes had to show videos at open-house like events for the department or when visitors come. I'd implemented a slideshow using reveal.js and froogaloop in the past but the code was lost to time. I figured that this time I would document it. 
+In the lab we've sometimes had to show videos at open-house like events for the department or when visitors come. I'd implemented a slideshow using reveal.js and froogaloop in the past but the code was lost to time. I figured that this time I would document it for future use. 
 
 For completeness a working example is [here](https://github.com/hmazhar/vimeo_slideshow)
 
+Beyond the Reveal.js and Froogaloop documentations [this](http://labs.funkhausdesign.com/examples/vimeo/froogaloop2-api-basics.html) page has a useful example that I found useful. 
 
 ###Specifications:
 * Start when user hits the right/left arrow or the play button is clicked on the first video
@@ -34,7 +35,7 @@ Createa empty slide div that will be filled in dynamically
 {% endhighlight %}
 
 
-Loop over all of the videos in the list and add the associated vimeo iframe for that video
+Loop over all of the videos in the list and add the associated vimeo iframe for that video. Specify the size of the iframe/vimeo video here.
 
 {% highlight js %}
 var videos = [142659744,142659745, 140448032];
@@ -51,6 +52,9 @@ var videos = [142659744,142659745, 140448032];
       sec.appendChild(ifrm);
       div.appendChild(sec);
     {% endhighlight %}
+
+    Initialize Reveal.js, this is where we can specify the size of the slide, and other parameters. See the [Reveal.js documentation](https://github.com/hakimel/reveal.js) for more info
+
 {% highlight js %}
     Reveal.initialize({
       controls: true,
@@ -78,17 +82,17 @@ Setup the froogaloop API so that the slide will go to the right when the video f
         }
     {% endhighlight %}  
 
-When a slide is changed play the video on that slide
+Once a slide is changed, get the vimeo iframe for the new slide, play the video on that slide
 
 {% highlight js %}
-        var vimeoPlayers = jQuery('iframe.vimeo')
+    var vimeoPlayers = jQuery('iframe.vimeo')
     Reveal.addEventListener( 'slidechanged', function( event ) {
       var state = Reveal.getState();
       Froogaloop(vimeoPlayers[state.indexh]).api('play');
     } );
     {% endhighlight %}
 
-If the slide is changed by the user before the current video finishes, pause the video and change the slide. 
+Reveal.js allows for custom keyboard functions, if the slide is changed by the user before the current video finishes, pause the video and change the slide. 
 
 {% highlight js %}
     Reveal.configure({
