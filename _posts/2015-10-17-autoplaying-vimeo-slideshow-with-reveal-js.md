@@ -24,7 +24,7 @@ We will be using the [froogaloop 2](https://github.com/vimeo/player-api/tree/mas
 <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>   
 {% endhighlight %}
 
-Createa empty slide div that will be filled in dynamically
+Create an empty slide div that will be filled in dynamically
 
 {% highlight html %}
 <div class="reveal">
