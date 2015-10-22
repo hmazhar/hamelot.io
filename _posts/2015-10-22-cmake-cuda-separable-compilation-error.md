@@ -27,5 +27,5 @@ Wanted to document it here for future reference, it was not immediately apparent
 
 ###References
 
-[nvidia forum post](https://devtalk.nvidia.com/default/topic/395049/shared-library-creation-/)
-[bug in cmake ](http://stackoverflow.com/questions/30642229/fail-to-build-shared-library-using-cmake-and-cuda)
+* [nvidia forum post](https://devtalk.nvidia.com/default/topic/395049/shared-library-creation-/)
+* [bug in cmake ](http://stackoverflow.com/questions/30642229/fail-to-build-shared-library-using-cmake-and-cuda)
