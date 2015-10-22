@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: CMake, CUDA Separable Compilation Error "relocation R_X86_64_32S against `a local symbol' can not be used when making a shared object; recompile with -fPIC"
