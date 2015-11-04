@@ -38,6 +38,39 @@ background { color rgb<1,1,1>  }
 {% endhighlight %}
 
 
+A more complete radiosity example looks like this:
+
+{% highlight pov %}
+global_settings {
+ radiosity {
+    pretrace_start 0.08
+     pretrace_end   0.01
+     count 50
+     nearest_count 10
+     error_bound 0.15
+     recursion_limit 1
+     low_error_factor 0.2
+     gray_threshold 0
+     minimum_reuse 0.015
+     brightness 1.0
+     adc_bailout 0.01
+  }
+}
+{% endhighlight %}
+
+### Max Trace Level
+
+```max_trace_level``` is a global settings that controls how many bounces each ray experiences. Another way to think about it is that if you had 100 glass spheres in a line, setting the ```max_trace_level``` to 10 would not allow light to pass through all of the objects because the ray didn't make it all of the way through and stopped after 10 layers.
+
+[Reference](http://www.povray.org/documentation/view/3.7.0/264/)
+
+{% highlight pov %}
+global_settings {
+ max_trace_level 3
+// ...
+}
+{% endhighlight %}
+
 ### Quaternions!
 
 Povray doesn't come with default support for quaternions but several years ago Alain Ducharme wrote a [very useful set of macros](http://news.povray.org/povray.binaries.scene-files/message/%3CXns940C86DC9B1D4None%40204.213.191.226%3E/#%3CXns940C86DC9B1D4None%40204.213.191.226%3E). The include file is [here](http://news.povray.org/povray.binaries.scene-files/attachment/%3CXns940C86DC9B1D4None%40204.213.191.226%3E/quaternions.inc.txt).
