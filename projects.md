@@ -30,9 +30,9 @@ The github repository is available [here](https://github.com/hmazhar/physbam_pub
 <div class="well" >
 <div class="row">
 <div class="col-md-3">
-<img style="width: 100%" alt="" src="/assets/media/images/projects/sls_roller_600k.png"/>
-<img style="width: 100%" alt="" src="/assets/media/images/projects/SLS_top_view_mixed_after_rolling.png"/>
-<img style="width: 100%" alt="" src="/assets/media/images/projects/aor_4200.png"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/sls_roller_600k.jpg"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/SLS_top_view_mixed_after_rolling.jpg"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/aor_4200.jpg"/>
 </div>
 <div class="col-md-9" markdown ="block">
 
@@ -58,8 +58,8 @@ Prof. Tim Osswald, Prof. Dan Negrut
 <div class="well" >
 <div class="row">
 <div class="col-md-3">
-<img style="width: 100%" alt="" src="/assets/media/images/projects/shek_walking_100.png"/>
-<img style="width: 100%" alt="" src="/assets/media/images/projects/shek_deep_499.png"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/shek_walking_100.jpg"/>
+<img style="width: 100%" alt="" src="/assets/media/images/projects/shek_deep_499.jpg"/>
 </div>
 <div class="col-md-9" markdown ="block">
 

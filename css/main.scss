@@ -22,3 +22,36 @@
 		"syntax-highlighting",
         "bootstrap"
 ;
+
+.logo {
+    font-family: 'Rubik', sans-serif;
+     line-height: 90%;
+}
+
+.first {
+    font-weight: bold;
+    font-size: 4em;
+    margin-right: 5px; 
+    color: #666666;
+	text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 3px 3px 5px #333;
+	text-align: right;
+	align: right;
+}
+
+.second {
+     font-weight: bold;
+    font-size: 4em;
+    margin-right: 5px; 
+    color: #333333;
+    	text-shadow: 1px 1px 0 #FFF, -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 3px 3px 5px #333;
+    	text-align: right;
+    	align: right;
+}
+.third {
+    font-weight: bold;
+    font-size: 2em;
+    margin-right: 5px; 
+    color: #435f77;
+    text-align: right;
+    align: right;
+}
