@@ -12,7 +12,7 @@ I sometimes need to use a color ramp in povray to render the velocity of a parti
 2014-1-14 - Updated
 
  
-{% highlight c++ %}
+{% highlight pov %}
 //velocity of object is stored in vx, vy, vz
 #local c=<1,1,1>;
 #local p=sqrt(vx*vx+vy*vy+vz*vz);
