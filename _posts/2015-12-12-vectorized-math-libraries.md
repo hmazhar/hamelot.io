@@ -28,6 +28,8 @@ A list of vectorized math libraries I found so far, documenting here for future 
 | [eigen3](http://eigen.tuxfamily.org)                                                                     | MPL2         | SSE*, AVX, FMA, VSX, NEON                 |
 {:.table .table-condensed}
 
+
+
 References Used:
 
  - [libvolk](http://libvolk.org/comparisons.html)
