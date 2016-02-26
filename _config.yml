@@ -9,8 +9,9 @@ author: hammad mazhar
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 permalink: /:categories/:title
 excerpt_separator: "\n\n\n"
 paginate: 5
 paginate_path: posts/page:num
+gems:      [jekyll-paginate]
