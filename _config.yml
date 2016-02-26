@@ -10,7 +10,7 @@ author: hammad mazhar
 # Build settings
 markdown: kramdown
 highlighter: rouge
-permalink: /:categories/:title
+permalink: /:categories/:title/
 excerpt_separator: "\n\n\n"
 paginate: 5
 paginate_path: posts/page:num
