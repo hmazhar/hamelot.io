@@ -7,7 +7,7 @@ categories: other
 tags: [node, jekyll, github]
 ---
 
-There are a [few](https://github.com/developmentseed/jekyll-hook) [scripts](https://github.com/logsol/Github-Auto-Deploy) online that will launch a script when a github [Github Webhook](https://help.github.com/articles/about-webhooks/) is activated. I found that [Hookshot](https://www.npmjs.com/package/hookshot) was the simplest and most customizable way to do what I wanted. It is a simple library that will handle 
+There are a [few](https://github.com/developmentseed/jekyll-hook) [scripts](https://github.com/logsol/Github-Auto-Deploy) online that will launch a script when a [Github Webhook](https://help.github.com/articles/about-webhooks/) is activated. I found that [Hookshot](https://www.npmjs.com/package/hookshot) was the simplest and most customizable way to do what I wanted. It is a simple library that will handle 
 
 ## Setting up the Webhook
 ~~~
