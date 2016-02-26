@@ -13,7 +13,7 @@ A list of vectorized math libraries I found so far, documenting here for future 
 |----------------------------------------------------------------------------------------------------------|--------------|-------------------------------------------|
 | [VCL](http://www.agner.org/optimize/)                                                                    | GPLv3        | SSE*, AVX, AVX2, AVX-512, FMA3, FMA4, XOP |
 | [VOLK](http://libvolk.org/)                                                                              | GPLv3        | SSE*, AVX, NEON                           |
-| [Vc](https://compeng.uni-frankfurt.de/index.php?id=vc)                                                   | LGPLv3       | SSE*, AVX                                 |
+| [Vc](https://compeng.uni-frankfurt.de/index.php?id=vc)                                                   | BSD          | SSE*, AVX                                 |
 | [libsimdpp](https://github.com/p12tic/libsimdpp/wiki)                                                    | Boost        | SSE2+, AVX, AVX2, FMA, AVX-512, NEON      |
 | [Yeppp!](http://www.yeppp.info/)                                                                         | BSD3         | SSE*, AVX, AVX2, FMA, NEON, NEONv2        |
 | [Ne10](http://projectne10.github.io/Ne10/)                                                               | BSD3         | NEON                                      |
