@@ -15,3 +15,4 @@ excerpt_separator: "\n\n\n"
 paginate: 5
 paginate_path: posts/page:num
 gems:      [jekyll-paginate]
+future: true
