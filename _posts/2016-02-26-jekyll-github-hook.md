@@ -10,37 +10,38 @@ tags: [node, jekyll, github]
 There are a [few](https://github.com/developmentseed/jekyll-hook) [scripts](https://github.com/logsol/Github-Auto-Deploy) online that will launch a script when a [Github Webhook](https://help.github.com/articles/about-webhooks/) is activated. I found that [Hookshot](https://www.npmjs.com/package/hookshot) was the simplest and most customizable way to do what I wanted. It is a simple library that will handle 
 
 ## Setting up the Webhook
-~~~
+
+~~~bash
 npm install -g hookshot
 ~~~
 
 It can be used to execute scripts or commands when a specific branch in a repository is pushed to, in this example port 8080 is where the github hook is sent to.
 
-~~~
+~~~bash
 hookshot -p 8080 -r refs/heads/master 'path_to_custom_script.sh'
 ~~~
 
 Hookshot can also be configured to run using [forever](https://www.npmjs.com/package/forever) by using the js interface:
 
-~~~
-##hookshot.js:
+~~~js
+//hookshot.js:
 #!/usr/bin/env node
 var hookshot = require('hookshot');
 hookshot('refs/heads/master', 'path_to_custom_script.sh').listen(8080)
 ~~~
 
 
-~~~
+~~~bash
 forever start hookshot.js
 ~~~
 
 If you want this command to run on reboot (if your server restarts for some reason) add the following to your crontab
 
-~~~
+~~~bash
 crontab -e
 ~~~
 
-~~~
+~~~bash
 @reboot cd /path/to/script forever hookshot.js
 ~~~
 
@@ -71,7 +72,7 @@ http://hooks.website.org
 
 Once the webhook has activated hookshot will run whatever script we provide. In this case we could do something like:
 
-~~~
+~~~bash
 #!/bin/bash
 cd /path/to/repo/
 git pull
