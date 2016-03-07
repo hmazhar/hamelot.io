@@ -3,9 +3,9 @@ title: Hammad M
 email: hammad@hamelot.co.uk
 description: Multibody Dynamics Research, Among Other Things
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://hamelot.co.uk" # the base hostname & protocol for your site
-feed_url: "http://hamelot.co.uk/feed.xml"
-author: hammad mazhar
+url: "http://hamelot.io" # the base hostname & protocol for your site
+feed_url: "http://hamelot.io/feed.xml"
+author: Hammad Mazhar
 
 # Build settings
 markdown: kramdown
@@ -14,5 +14,9 @@ permalink: /:categories/:title/
 excerpt_separator: "\n\n\n"
 paginate: 5
 paginate_path: posts/page:num
-gems:      [jekyll-paginate]
+gems:      [jekyll-paginate,octopress-minify-html,jekyll-sitemap]
 future: true
+sass:
+  style: compressed
+env: production
+minify_html: false

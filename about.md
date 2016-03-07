@@ -15,7 +15,7 @@ permalink: /about/
 			<p>I am a Graduate Student in the Mechanical Engineering Department at the UW Madison. I currently work as a research assistant at the <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a> under Professor Dan Negrut. I work on topics related to parallel computing on CPUs/GPUs, multibody dynamics programming, benchmarking, build testing, graphics and rendering, and web design.</p>
 			</div>
 			<div class="col-md-5 column"> 
-			<address> <strong>Hammad Mazhar</strong><br /> Department of Mechanical Engineering<br /> University of Wisconsin Madison<br /> <abbr title="Email"></abbr> hammad (at) hamelot.co.uk</address>
+			<address> <strong>Hammad Mazhar</strong><br /> Department of Mechanical Engineering<br /> University of Wisconsin Madison<br /> <abbr title="Email"></abbr> hammad (at) hamelot.io</address>
 			</div>
 		</div>
 	<!-- </div> -->
@@ -45,7 +45,9 @@ permalink: /about/
 		<h4 class="text-primary"> Languages</h4>
 		<p> Experienced: C, C++ </p>
 		<p> Proficient: Matlab, Python, Latex, JavaScript </p>
-		<p> Familiar: Assembly, PHP, CSS, Ruby, Java </p>
+		<p> Familiar: Assembly, PHP, CSS, Ruby, Java, R </p>
+		<h4 class="text-primary"> Build Systems</h4>
+		<p> Makefiles, CMake, SCons</p>
 
 		<h3> Tools</h3>
 		<p> Maple, Solidworks, Blender, 3DS Max, Maya, PovRay, Mitsuba, Photoshop, CMake </p>
