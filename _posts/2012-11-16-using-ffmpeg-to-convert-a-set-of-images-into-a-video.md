@@ -11,7 +11,7 @@ When using ffmpeg to compress a video, I recommend using the libx264 codec, from
 
 To take a list of images that are padded with zeros (pic0001.png, pic0002.png.... etc) use the following command:
 {% highlight bash %}
-ffmpeg -r 60 -f image2 -s 1920x1080 -i pic%04d.png -vcodec libx264 -crf 25  test.mp4
+ffmpeg -r 60 -f image2 -s 1920x1080 -i pic%04d.png -vcodec libx264 -crf 25  -pix_fmt yuv420p test.mp4
 {% endhighlight %}
 
 where the %04d means that zeros will be padded until the length of the string is 4 i.e 0001...0020...0030...2000 and so on. If no padding is needed use something similar to pic%d.png.
@@ -19,8 +19,18 @@ where the %04d means that zeros will be padded until the length of the string is
 *  -r is the framerate (fps)
 *  -crf is the quality, lower means better quality, 15-25 is usually good
 *  -s is the resolution
+* -pix_fmt yuv420p specifies the pixel format, change this as needed
 
 the file will be output (in this case) to: test.mp4 
+
+#### Specifying start and end frames
+
+{% highlight bash %}
+ffmpeg -r 60 -f image2 -s 1920x1080 -start_number 1 -i pic%04d.png -vframes 1000 -vcodec libx264 -crf 25  -pix_fmt yuv420p test.mp4
+{% endhighlight %}
+
+* -start_number specifies what image to start at
+* -vframes 1000 specifies the number frames/images in the video
 
 #### Using -vpre with a setting file
 
@@ -31,6 +41,7 @@ the file will be output (in this case) to: test.mp4
 -vpre is the quality setting, better quality takes longer to encode, some alternatives are: default, normal, hq, max. Note that the -vpre command only works if the corresponding setting file is available.
 
 ###Finer Bitrate control (to control size and quality)
+
 {% highlight bash %}
  -b 4M
 {% endhighlight %}
@@ -38,6 +49,7 @@ you can use the -b flag to specify the target bitrate, in this case it is 4 mega
 
 
 ###Adding a mp3 to a video 
+
 Adding sound to a video is straightforward
 
 {% highlight bash %}
@@ -48,12 +60,12 @@ ffmpeg -r 60 -f image2 -s 1280x720 -i pic%05d.png -i MP3FILE.mp3 -vcodec libx264
 -acodec copy : Copies the audio from the input stream to the output stream
 
 ###Converting a video to mp4 
+
 If the video has already been compressed the following can be used to change the codmpression to h264:
 
 {% highlight bash %}
 ffmpeg  -i INPUT.avi -vcodec libx264 -crf 25 OUTPUT.mp4
 {% endhighlight %}
-
 
 ###Playback Issues for Quicktime/Other Codecs
 
