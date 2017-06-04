@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Batch Crop And Join Sets On Images
+title: Batch Crop And Join Sets Of Images
 date: '2016-03-10'
-description: Taking two sets of images and using image magic to crop them and then join them together
+description: Taking two sets of images and using ImageMagick to crop them and then join them together
 categories: linux
 tags: [bash]
 ---
 
-Recently I needed to take two different animations and join them together [the result is here](https://vimeo.com/158412096)
+Recently I needed to take two different animations and join them together to create a video using ffmpeg [the result is here](https://vimeo.com/158412096).
 
-I needed to take an image with a size of 1920x1080 and crop it on the top and bottom to 1920x540. The simplest way to do this is to use [convert](http://www.imagemagick.org/script/convert.php) from [ImageMagick](http://www.imagemagick.org/script/index.php)
+I needed to take an image with a size of 1920x1080 and crop it on the top and bottom to 1920x540. The simplest way to do this is to use [convert](http://www.imagemagick.org/script/convert.php) from [ImageMagick](http://www.imagemagick.org/script/index.php).
 
 For a single image this looked like:
 

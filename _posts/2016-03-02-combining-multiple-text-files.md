@@ -29,11 +29,16 @@ foo_9.txt
 
 The process can be broken into three steps:
 
-List the files which we want to combine
-Sort the listed files by their version and not name, this preserves the ordering
-Cat sorted files into a single file
+* List the files which we want to combine.
+* Sort the listed files by their version and not name, this preserves the ordering.
+* Cat sorted files into a single file.
 
 ~~~bash
 ls foo*.txt |sort --version-sort | xargs cat > foo_all.txt
 ~~~
 
+To combine files from a specific sequence the following can be used
+
+~~~bash
+for i in {1..12}; do cat foo_$i.txt>>foo_all.txt; done
+~~~

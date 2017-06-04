@@ -12,7 +12,7 @@ permalink: /about/
 	<!-- <div class="col-md-8 column"> -->
 		<div class="row clearfix">
 			<div class="col-md-7 column">
-			<p>I am a Graduate Student in the Mechanical Engineering Department at the UW Madison. I currently work as a research assistant at the <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a> under Professor Dan Negrut. I work on topics related to parallel computing on CPUs/GPUs, multibody dynamics programming, benchmarking, build testing, graphics and rendering, and web design.</p>
+			<p>I am a Graduate Student in the Mechanical Engineering Department at the UW Madison. I currently work as a research assistant at the <a href="http://sbel.wisc.edu">Simulation Based Engineering Laboratory [SBEL] </a> under Professor Dan Negrut. I work on topics related to parallel computing on CPUs/GPUs, multibody dynamics programming, benchmarking, build testing, graphics and rendering, and web design. Currently most of my time is spent developing <a href="http://projectchrono.org">Project Chrono</a>, an open source physics engine framework for multi-physics applications.</p>
 			</div>
 			<div class="col-md-5 column"> 
 			<address> <strong>Hammad Mazhar</strong><br /> Department of Mechanical Engineering<br /> University of Wisconsin Madison<br /> <abbr title="Email"></abbr> hammad (at) hamelot.io</address>
@@ -20,23 +20,27 @@ permalink: /about/
 		</div>
 	<!-- </div> -->
 </div>
-<div class="row">
+<!-- <div class="row">
 	<div class="col-md-4 column">
 		<h2 class="text-muted"> EDUCATION</h2>
 		<h3> University of Wisconsin Madison</h3>
 		<h4 class="text-primary">PhD in Mechanical Engineering</h4>
-		<p> Advisor: Professor Dan Negrut </p>
+		<p> Advisor: <a href="http://homepages.cae.wisc.edu/~negrut/" > Professor Dan Negrut </a></p>
 		<h4 class="text-primary">MS in Mechanical Engineering</h4>
 		<p> December 2012 </p>
-		<p> Advisor: Professor Dan Negrut </p>
+		<p> Advisor: <a href="http://homepages.cae.wisc.edu/~negrut/" > Professor Dan Negrut </a></p>
 		<h4 class="text-primary">BS in Mechanical Engineering</h4>
 		<p> December 2010 </p>
 
 		<h2 class="text-muted"> LINKS</h2>
-		<p> <a href="https://github.com/hmazhar" rel="me"><i class="icon-github-squared"></i></a>
+		<p> 
+		<a href="https://github.com/hmazhar" rel="me"><i class="icon-github-squared"></i></a>
         <a href="https://www.linkedin.com/in/hammadmazhar/" rel="me"><i class="icon-linkedout-squared"></i></a>
         <a href="https://plus.google.com/117672433856025584680?rel=author" rel="me"> <i class="icon-plus-squared"></i></a>
-        <a href="https://vimeo.com/hammadmazhar/videos/appears/" rel="me"> <i class="icon-video-squared"></i></a></p>
+        <a href="https://vimeo.com/hammadmazhar/videos/appears/" rel="me"> <i class="icon-video-squared"></i></a>
+        <a href="https://github.com/projectchrono/chrono" rel="me"><i class="icon-github-squared"></i></a>
+        <a href="https://projectchrono.org" rel="me"><i class="icon-globe"></i></a>
+        </p>
 
 		<h2 class="text-muted"> SKILLS</h2>
 		<h3> Programming</h3>
@@ -112,4 +116,4 @@ permalink: /about/
 
 
 	</div>
-</div>
+</div> -->

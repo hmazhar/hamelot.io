@@ -23,7 +23,7 @@ thrust::sequence(point_number.begin(), point_number.end());
 
 Then we sort the input list
 
-~~~
+~~~cpp
 thrust::sort_by_key(point_cell_mapping.begin(), point_cell_mapping.end(), point_number.begin());
 ~~~
 
